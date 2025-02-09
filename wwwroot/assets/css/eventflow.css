@@ -433,7 +433,7 @@ ul {
   -webkit-transition: all .4s ease-in .8s;
   -o-transition: all .4s ease-in .8s;
   transition: all .4s ease-in .8s;
-  cursor: url(../images/icon/cross-out.png),
+  cursor: url(../images/icon/star-icon.png),
     pointer;
   z-index: 9999;
 }
