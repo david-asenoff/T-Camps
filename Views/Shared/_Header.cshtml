@@ -1,4 +1,7 @@
-﻿@* Views/Shared/_Header.cshtml *@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<T_Camps.Recources.Resources> Localizer
+
+@* Views/Shared/_Header.cshtml *@
 <header class="main-header">
     <nav class="main-menu">
         <div class="main-menu__wrapper">
@@ -10,23 +13,22 @@
                                 <img src="/assets/images/icon/star-icon.png" alt="" style="max-width: 100px">
                              </h6>
                         </a>
-
                     </div>
                 </div>
                 <div class="main-menu__main-menu-box">
                     <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                     <ul class="main-menu__list">
                         <li>
-                            <a asp-controller="Home" asp-action="Index">Home</a>
+                            <a asp-controller="Home" asp-action="Index">@Localizer["HOME"]</a>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="About">About</a>
+                            <a asp-controller="Home" asp-action="About">@Localizer["ABOUT"]</a>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="Events">Events</a>
+                            <a asp-controller="Home" asp-action="Events">@Localizer["EVENTS"]</a>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="Contact">Contact</a>
+                            <a asp-controller="Home" asp-action="Contact">@Localizer["CONTACT"]</a>
                         </li>
                     </ul>
                 </div>
@@ -48,6 +50,60 @@
                         </a>
                     </div>
                 </div>
+@* 
+                <div class="dropdown">
+                    <a class="nav-link text-dark dropdown-togge" href="#" role="button" data-bs-toogle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        English
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="en">English</a></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="bg">Bulgarian</a></li>
+                    </ul>
+                </div> *@
+
+@*                 <div class="dropdown show">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    English
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="en">EN</a>
+                    <a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="bg">BG</a>
+                  </div>
+                </div> *@
+
+@*                 <div class="dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        English
+                    </a>                <div class="dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @Localizer["Language"]
+                    </a>
+                    <div class="dropdown-menu">
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en">English</a></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="bg">Bulgarian</a></li>
+                    </div>
+                </div>
+                    <div class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">English</a></li>
+                        <li><a class="dropdown-item" href="#">Bulgarian</a></li>
+                    </div>
+                </div> *@
+
+
+                <div class="dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @Localizer["Language"]
+                    </a>
+                    <div class="dropdown-menu">
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="en">English</a></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="bg">Bulgarian</a></li>
+                    </div>
+                </div>
+
+            </div>
+
+
             </div>
         </div>
     </nav>
