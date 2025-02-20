@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Recources\Resource.en.resx">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Recources\Resource.bg.resx">
       <Generator></Generator>
     </EmbeddedResource>
