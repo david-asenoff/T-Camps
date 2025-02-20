@@ -49,15 +49,17 @@ public class HomeController : Controller
     {
         if (!string.IsNullOrEmpty(lang))
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(lang);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
+            var culture = new CultureInfo(lang);
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
             Response.Cookies.Append("Language", lang);
             _logger.LogInformation($"Language changed to {lang}");
         }
         else
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en");
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+            var culture = new CultureInfo("en");
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
             Response.Cookies.Append("Language", "en");
             _logger.LogInformation("Language changed to default (en)");
         }
