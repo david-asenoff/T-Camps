@@ -71,5 +71,18 @@ public class HomeController : Controller
         }
 
         return Redirect(referer);
+        //if (!string.IsNullOrEmpty(lang))
+        //{
+        //    Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(lang);
+        //    Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
+        //}
+        //else
+        //{
+        //    Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en");
+        //    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+        //    lang = "en";
+        //}
+        //Response.Cookies.Append("Language", lang);
+        //return Redirect(Request.GetTypedHeaders().Referer.ToString());
     }
 }
