@@ -1,5 +1,5 @@
 ﻿@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<T_Camps.Recources.Resources> Localizer
+@inject IStringLocalizer<T_Camps.Recources.Resource> Localizer
 
 @* Views/Shared/_Header.cshtml *@
 <header class="main-header">
@@ -9,9 +9,9 @@
                 <div class="main-menu__left">
                     <div class="main-menu__logo">
                         <a asp-controller="Home" asp-action="Index">
-                             <h6 data-hover=" Celebrate Life" class="sliding-text__title" style="font-size: xx-large;">T-Camps
+                            <h6 data-hover=" Celebrate Life" class="sliding-text__title" style="font-size: xx-large;">T-Camps
                                 <img src="/assets/images/icon/star-icon.png" alt="" style="max-width: 100px">
-                             </h6>
+                            </h6>
                         </a>
                     </div>
                 </div>
@@ -19,16 +19,16 @@
                     <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                     <ul class="main-menu__list">
                         <li>
-                            <a asp-controller="Home" asp-action="Index">@Localizer["HOME"]</a>
+                            <a asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="About">@Localizer["ABOUT"]</a>
+                            <a asp-controller="Home" asp-action="About">@Localizer["About"]</a>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="Events">@Localizer["EVENTS"]</a>
+                            <a asp-controller="Home" asp-action="Events">@Localizer["Events"]</a>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="Contact">@Localizer["CONTACT"]</a>
+                            <a asp-controller="Home" asp-action="Contact">@Localizer["Contact"]</a>
                         </li>
                     </ul>
                 </div>
@@ -50,54 +50,29 @@
                         </a>
                     </div>
                 </div>
-@* 
-                <div class="dropdown">
-                    <a class="nav-link text-dark dropdown-togge" href="#" role="button" data-bs-toogle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        English
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="en">English</a></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="bg">Bulgarian</a></li>
-                    </ul>
-                </div> *@
-
-@*                 <div class="dropdown show">
-                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    English
-                  </a>
-
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="en">EN</a>
-                    <a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="bg">BG</a>
-                  </div>
-                </div> *@
-
-@*                 <div class="dropdown">
-                    <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        English
-                    </a>                <div class="dropdown">
-                    <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @Localizer["Language"]
-                    </a>
-                    <div class="dropdown-menu">
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en">English</a></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="bg">Bulgarian</a></li>
-                    </div>
-                </div>
-                    <div class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">English</a></li>
-                        <li><a class="dropdown-item" href="#">Bulgarian</a></li>
-                    </div>
-                </div> *@
-
 
                 <div class="dropdown">
-                    <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @Localizer["Language"]
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @if (Thread.CurrentThread.CurrentCulture.ToString() == "en")
+                        {
+                            <span>English</span>
+                        }
+                        else
+                        {
+                            <span>Български</span>
+                        }
                     </a>
                     <div class="dropdown-menu">
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="en">English</a></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="bg">Bulgarian</a></li>
+                        @if (Thread.CurrentThread.CurrentCulture.ToString() == "bg")
+                        {
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="bg">Български</a></li>
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="en">Английски</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="en">English</a></li>
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="bg">Bulgarian</a></li>
+                        }
                     </div>
                 </div>
 
