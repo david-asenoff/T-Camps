@@ -1,8 +1,13 @@
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
-
+using Microsoft.EntityFrameworkCore;
+using T_Camps.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TCampDatabase")));
 
 builder.Services.AddControllersWithViews();
 
@@ -21,6 +26,8 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
 });
+
+
 
 var app = builder.Build();
 
