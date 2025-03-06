@@ -9,6 +9,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TCampDatabase")));
 builder.Services.AddControllersWithViews();
 builder.Services.AddLocalization();
+builder.Services.AddScoped<DataSeeder>();
 
 // Add localization services
 builder.Services.Configure<RequestLocalizationOptions>(options =>
