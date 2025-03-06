@@ -8,8 +8,12 @@
 }
 
 <h2>ADMIN PANEL</h2>
+<p class="d-flex w-100">
+    <a href="@Url.Action("Create", "Admin")" class="btn btn-primary flex-shrink-0 me-2" style="width: 10%;">Create New</a>
+    <a href="@Url.Action("SeedData", "Admin")" class="btn btn-secondary flex-shrink-0 me-2" style="width: 10%;">Seed Dummy Data</a>
+    <input type="text" id="searchInput" class="form-control flex-grow-1" placeholder="Search...">
+</p>
 
-<input type="text" id="searchInput" class="form-control mb-3" style="width: 16.66%;" placeholder="Search...">
 
 <table class="table-bordered table-dark table-striped col-md-12" id="clientsTable">
     <thead>

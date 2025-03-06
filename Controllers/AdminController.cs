@@ -6,10 +6,11 @@ using T_Camps.Data;
 public class AdminController : Controller
 {
     private readonly ApplicationDbContext _context;
-
-    public AdminController(ApplicationDbContext context)
+    private readonly DataSeeder _dataSeeder;
+    public AdminController(ApplicationDbContext context, DataSeeder? dataSeeder)
     {
         _context = context;
+        _dataSeeder = dataSeeder;
     }
 
     public async Task<IActionResult> Index()
@@ -100,5 +101,11 @@ public class AdminController : Controller
     private bool ClientExists(int id)
     {
         return _context.Clients.Any(e => e.Id == id);
+    }
+
+    public async Task<IActionResult> SeedData()
+    {
+        await _dataSeeder.SeedClientsAsync();
+        return RedirectToAction(nameof(Index));
     }
 }
