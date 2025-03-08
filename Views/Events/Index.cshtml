@@ -1,0 +1,19 @@
+﻿@model IEnumerable<T_Camps.Models.Event>
+
+@{
+    ViewData["Title"] = "Upcoming Events";
+}
+
+<h1>Upcoming Events</h1>
+
+<ul>
+    @foreach (var x in Model)
+    {
+    <li>
+        <h2>@x.Name</h2>
+        <p>@x.StartDate.ToString("dd MMMM yyyy")</p>
+        <p>@x.Location</p>
+        <p>@x.Price.ToString("C")</p>
+    </li>
+    }
+</ul>
