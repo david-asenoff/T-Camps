@@ -27,29 +27,7 @@
         <div class="container">
             <div class="site-footer__middle-inner">
                 <div class="row">
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                        <div class="footer-widget__column footer-widget__events">
-                            <div class="footer-widget__title-box">
-                                <h3 class="footer-widget__title">Upcoming Events</h3>
-                            </div>
-                            <ul class="footer-widget__events-list list-unstyled">
-                                <li>
-                                    <p>11 April 2024 At 10 Pm In Dhaka</p>
-                                    <h5>Ui/ux Designer Meetup</h5>
-                                    <a href="event-details.html">
-                                        Get a Ticket <span class="icon-arrow-right"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <p>11 April 2024 At 10 Pm In Dhaka</p>
-                                    <h5>Ui/ux Designer Meetup</h5>
-                                    <a href="event-details.html">
-                                        Get a Ticket <span class="icon-arrow-right"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    @await (Component.InvokeAsync<T_Camps.ViewComponents.UpcomingEventsViewComponent>())
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
                         <div class="footer-widget__column footer-widget__link">
                             <div class="footer-widget__title-box">
