@@ -2,33 +2,40 @@
 @{
     Layout = null;
 }
-<div class="footer-widget__contact-inner">
-    <ul class="footer-widget__contact-list list-unstyled">
-        <li>
-            <div class="icon">
-                <span class="icon-envelop"></span>
-            </div>
-            <div class="text">
-                <p>
-                    <a href="mailto:@Model.Email">@Model.Email</a>
-                </p>
-            </div>
-        </li>
-        <li>
-            <div class="icon">
-                <span class="icon-pin"></span>
-            </div>
-            <div class="text">
-                <p>@Model.X</p>
-            </div>
-        </li>
-        <li>
-            <div class="icon">
-                <span class="icon-call"></span>
-            </div>
-            <div class="text">
-                <p><a href="tel:@Model.Facebook">@Model.PhoneNumber</a></p>
-            </div>
-        </li>
-    </ul>
+<div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+    <div class="footer-widget__column footer-widget__contact">
+        <div class="footer-widget__title-box">
+            <h3 class="footer-widget__title">Contact</h3>
+        </div>
+        <div class="footer-widget__contact-inner">
+            <ul class="footer-widget__contact-list list-unstyled">
+                <li>
+                    <div class="icon">
+                        <span class="icon-envelop"></span>
+                    </div>
+                    <div class="text">
+                        <p>
+                            <a href="mailto:@Model.Email">@Model.Email</a>
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon">
+                        <span class="icon-pin"></span>
+                    </div>
+                    <div class="text">
+                        <p>@Model.X</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon">
+                        <span class="icon-call"></span>
+                    </div>
+                    <div class="text">
+                        <p><a href="tel:@Model.Facebook">@Model.PhoneNumber</a></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
