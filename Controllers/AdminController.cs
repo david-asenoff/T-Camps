@@ -106,6 +106,12 @@ public class AdminController : Controller
     public async Task<IActionResult> SeedData()
     {
         await _dataSeeder.SeedClientsAsync();
+        await _dataSeeder.SeedCompaniesAsync();
+        await _dataSeeder.SeedMissionsAsync();
+        await _dataSeeder.SeedServicesAsync();
+        await _dataSeeder.SeedMembersAsync();
+        await _dataSeeder.SeedTermsAndConditionsAsync();
+        await _dataSeeder.SeedEventsAsync();
         return RedirectToAction(nameof(Index));
     }
 }
