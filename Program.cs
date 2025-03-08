@@ -38,7 +38,6 @@ app.UseStatusCodePagesWithReExecute("/Error/{0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseMiddleware<T_Camps.Middleware.LocalizationMiddleware>();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",

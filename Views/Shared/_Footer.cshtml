@@ -61,36 +61,8 @@
                             <div class="footer-widget__title-box">
                                 <h3 class="footer-widget__title">Contact</h3>
                             </div>
-                            <div class="footer-widget__contact-inner">
-                                <ul class="footer-widget__contact-list list-unstyled">
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-envelop"></span>
-                                        </div>
-                                        <div class="text">
-                                            <p>
-                                                <a href="mailto:nafiz125@gmail.com">nafiz125@gmail.com</a>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-pin"></span>
-                                        </div>
-                                        <div class="text">
-                                            <p>3891 Ranchview Dr. Richardson</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-call"></span>
-                                        </div>
-                                        <div class="text">
-                                            <p><a href="tel:01245789321">01245789321, 012457895146</a></p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                            @await (Component.InvokeAsync<T_Camps.ViewComponents.ContactsViewComponent>())
+
                         </div>
                     </div>
                 </div>
