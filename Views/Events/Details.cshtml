@@ -1,0 +1,14 @@
+﻿@model T_Camps.Models.Event
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<h1>@Model.Name</h1>
+
+<p><strong>Date:</strong> @Model.StartDate.ToString("dd MMMM yyyy") - @Model.EndDate.ToString("dd MMMM yyyy")</p>
+<p><strong>Location:</strong> @Model.Location</p>
+<p><strong>Price:</strong> @Model.Price.ToString("C")</p>
+
+<h2>Event Details</h2>
+<p>@Model.Name</p>
