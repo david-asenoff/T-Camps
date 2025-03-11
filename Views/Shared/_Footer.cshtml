@@ -1,4 +1,6 @@
-﻿<!--Site Footer Start-->
+﻿@model Company
+
+<!--Site Footer Start-->
 <footer class="site-footer">
     <div class="site-footer__shape-1 float-bob-y">
         <img src="/assets/images/shapes/site-footer-shape-1.png" alt="">
@@ -15,10 +17,11 @@
                     </a>
                 </div>
                 <div class="site-footer__social">
-                    <a href="#"><i class="icon-facebook"></i></a>
-                    <a href="#"><i class="icon-fi"></i></a>
-                    <a href="#"><i class="icon-instagram"></i></a>
-                    <a href="#"><i class="icon-pinterest"></i></a>
+                    <a href="@Model.Facebook" target="_blank"><i class="icon-facebook"></i></a>
+                    <a href="@Model.X" target="_blank"><i class="icon-fi"></i></a>
+                    <a href="@Model.Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                    <a href="@Model.LinkedIn" target="_blank"><i class="icon-linkedin-in"></i></a>
+                    <a href="@Model.YouTube" target="_blank"><i class="icon-youtube2"></i></a>
                 </div>
             </div>
         </div>

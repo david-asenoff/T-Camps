@@ -11,12 +11,14 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly ApplicationDbContext _context;
+    private readonly DataSeeder _dataSeeder;
 
     public HomeController(ILogger<HomeController> logger
-        , ApplicationDbContext context)
+        , ApplicationDbContext context, DataSeeder dataSeeder)
     {
         _logger = logger;
         _context = context;
+        _dataSeeder = dataSeeder;
     }
 
     public async Task<IActionResult> Index()
@@ -26,6 +28,7 @@ public class HomeController : Controller
             .Include(c => c.Services)
             .FirstOrDefaultAsync();
 
+        await SeedDataAsync();
         return View(company);
     }
 
@@ -94,5 +97,17 @@ public class HomeController : Controller
         //}
         //Response.Cookies.Append("Language", lang);
         //return Redirect(Request.GetTypedHeaders().Referer.ToString());
+    }
+
+    public async Task<IActionResult> SeedDataAsync()
+    {
+        await _dataSeeder.SeedClientsAsync();
+        await _dataSeeder.SeedCompaniesAsync();
+        await _dataSeeder.SeedMissionsAsync();
+        await _dataSeeder.SeedServicesAsync();
+        await _dataSeeder.SeedMembersAsync();
+        await _dataSeeder.SeedTermsAndConditionsAsync();
+        await _dataSeeder.SeedEventsAsync();
+        return RedirectToAction(nameof(Index));
     }
 }
