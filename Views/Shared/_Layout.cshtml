@@ -1,4 +1,20 @@
-﻿@RenderSection("Scripts", required: false)
+﻿@inject T_Camps.Services.CompanyService CompanyService
+
+@functions {
+    private Company company;
+
+    public async Task LoadCompanyAsync()
+    {
+        company = await CompanyService.GetCompanyAsync();
+    }
+}
+
+@{
+    // Call the method to load the company data
+    await LoadCompanyAsync();
+}
+
+@RenderSection("Scripts", required: false)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +57,8 @@
     <link rel="stylesheet" href="/assets/css/eventflow-responsive.css" />
 
     <link href="~/css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMU5i6b4e1B1D1f1F1F1F1F1F1F1F1F1F1F1" crossorigin="anonymous">
+
     @RenderSection("styles", required: false)
 </head>
 
@@ -74,7 +92,7 @@
 <!-- template js -->
 <script src="/assets/js/eventflow.js"></script>
 
-@await Html.PartialAsync("_Footer")
+@await Html.PartialAsync("_Footer", company)
 
 <div class="mobile-nav__wrapper">
     <div class="mobile-nav__overlay mobile-nav__toggler"></div>
