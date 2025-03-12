@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using T_Camps.Data;
+using T_Camps.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddLocalization();
 builder.Services.AddScoped<DataSeeder>();
+builder.Services.AddScoped<CompanyService>();
 
 // Add localization services
 builder.Services.Configure<RequestLocalizationOptions>(options =>
