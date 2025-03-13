@@ -58,6 +58,36 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult JoinIn()
+    {
+        return View();
+    }
+
+    public async Task<IActionResult> InfoNpo()
+    {
+        var company = await _context.Companies
+            .Include(c => c.Missions)
+            .Include(c => c.Services)
+            .FirstOrDefaultAsync();
+
+        if (company == null)
+        {
+            return NotFound();
+        }
+
+        return View(company);
+    }
+
+    public async Task<IActionResult> Terms()
+    {
+        var company = await _context.Companies
+            .Include(c => c.Missions)
+            .Include(c => c.Services)
+            .FirstOrDefaultAsync();
+
+        return View(company);
+    }
+
     public IActionResult ChangeLanguage(string lang)
     {
         if (!string.IsNullOrEmpty(lang))
