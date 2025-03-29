@@ -29,6 +29,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // Set alt attribute dynamically based on image name
+    var images = document.querySelectorAll('.gallery-one__img img');
+    images.forEach(function (img) {
+        var src = img.getAttribute('src');
+        var imageName = src.substring(src.lastIndexOf('/') + 1, src.lastIndexOf('.'));
+        img.setAttribute('alt', imageName);
+    });
 });
 
 function confirmDelete(clientId) {
@@ -36,4 +44,19 @@ function confirmDelete(clientId) {
     form.action = '/Admin/Delete/' + clientId;
     var modal = new bootstrap.Modal(document.getElementById('confirmModal'));
     modal.show();
+}
+
+
+//function hideLoadingMessage(img) {
+//    var loadingMessage = img.previousElementSibling;
+//    if (loadingMessage && loadingMessage.classList.contains('loading-message')) {
+//        loadingMessage.style.display = 'none';
+//    }
+//}
+
+function hideLoadingMessage(img) {
+    var loadingMessage = img.previousElementSibling;
+    if (loadingMessage && loadingMessage.classList.contains('loading-message')) {
+        loadingMessage.style.display = 'none';
+    }
 }

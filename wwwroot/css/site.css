@@ -31,11 +31,11 @@ body {
 }
 
 
-.containerHomePage {
+.containerHomePage, .mainContent {
     max-width: 80%;
     margin: 50px auto;
     padding: 20px;
-/*    background: #fff;*/
+    /*    background: #fff;*/
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -206,3 +206,10 @@ a.termsA {
     .info-goals-list li, .info-support-list li {
         margin-bottom: 0.5em;
     }
+
+.loading-message {
+    font-size: 1.2em;
+    color: yellow;
+    text-align: center;
+    padding: 10px;
+}
