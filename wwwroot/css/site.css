@@ -86,3 +86,123 @@ body {
 #homePageH2Id {
     margin-top: 0%;
 }
+
+
+h1.termsH1, h2.termsH2 {
+    color: white;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.8em;
+    margin-top: 0.5%;
+    margin-bottom: 1%;
+}
+
+p.termsP {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
+a.termsA {
+    color: #007bff;
+    text-decoration: none;
+}
+
+    a.termsA:hover {
+        text-decoration: underline;
+    }
+
+
+
+.join-membership-section, .join-volunteer-section, .join-summary-section {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.join-section-title {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    color: white;
+}
+
+.join-section-description, .join-subsection-description, .join-section-note, .join-contact-info {
+    margin-bottom: 1em;
+    color: white;
+}
+
+.join-subsection-title {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: white;
+}
+
+.join-membership-requirements, .join-membership-rights, .join-membership-duties,
+.join-volunteer-requirements, .join-volunteer-rights, .join-volunteer-duties {
+    list-style-type: disc;
+    margin-left: 2em;
+    margin-bottom: 1em;
+    color: #cccccc;
+}
+
+    .join-membership-requirements ul, .join-volunteer-requirements ul {
+        list-style-type: circle;
+    }
+
+.join-section-divider {
+    margin: 2em 0;
+}
+
+.join-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em;
+}
+
+    .join-summary-table th, .join-summary-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .join-summary-table th {
+        background-color: black;
+        font-weight: bold;
+        font-size: 1.3em;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+
+
+.info-npo-section {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-section-title {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    color: white;
+}
+
+.info-section-description, .info-subsection-description, .info-contact-info {
+    margin-bottom: 1em;
+    color: white;
+}
+
+.info-subsection-title {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: white;
+}
+
+.info-goals-list, .info-support-list {
+    list-style-type: disc;
+    margin-left: 2em;
+    margin-bottom: 1em;
+    color: #cccccc;
+}
+
+    .info-goals-list li, .info-support-list li {
+        margin-bottom: 0.5em;
+    }
