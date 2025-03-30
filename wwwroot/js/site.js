@@ -29,6 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // Hide loading component once the page is fully loaded
+    window.addEventListener('load', function () {
+        var loadingComponent = document.getElementById('loadingComponent');
+        if (loadingComponent) {
+            loadingComponent.style.display = 'none';
+        }
+    });
+
 });
 
 function confirmDelete(clientId) {
