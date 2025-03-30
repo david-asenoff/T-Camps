@@ -63,6 +63,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Gallery()
+    {
+        return View();
+    }
+
     public async Task<IActionResult> InfoNpo()
     {
         var company = await _context.Companies

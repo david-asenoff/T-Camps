@@ -31,11 +31,11 @@ body {
 }
 
 
-.containerHomePage {
+.containerHomePage, .mainContent {
     max-width: 80%;
     margin: 50px auto;
     padding: 20px;
-/*    background: #fff;*/
+    /*    background: #fff;*/
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -207,6 +207,12 @@ a.termsA {
         margin-bottom: 0.5em;
     }
 
+.loading-message {
+    font-size: 1.2em;
+    color: white;
+    text-align: center;
+    padding: 10px;
+
 .loading-component {
     position: fixed;
     top: 0;
@@ -233,4 +239,5 @@ a.termsA {
     font-size: 1.5em;
     color: white;
     margin-top: 10px;
+
 }
