@@ -29,8 +29,19 @@
                         <li>
                             <a asp-controller="Home" asp-action="Gallery">Галерия</a>
                         </li>
-                        <li>
+                        <li class="dropdown">
                             <a asp-controller="Home" asp-action="JoinIn">Включи се</a>
+                            <ul>
+                                <li>
+                                    <a asp-controller="Home" asp-action="JoinEvent">Участвай в събитие</a>
+                                </li>
+                                <li class="current">
+                                    <a asp-controller="Home" asp-action="BecomeMember">Стани Член на Т-Кампс</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="BecomeSponsor">Подкрепи като Спонсор</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a asp-controller="Home" asp-action="Contact">Контакти</a>

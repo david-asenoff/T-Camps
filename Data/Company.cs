@@ -6,6 +6,7 @@ namespace T_Camps.Models
     public class Company
     {
         public int Id { get; set; }
+        public string Name { get; set; }
 
         [Required]
         public string Moto { get; set; }

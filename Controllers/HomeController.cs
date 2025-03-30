@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T_Camps.Data;
 using T_Camps.Models;
+using T_Camps.ViewModels;
 
 namespace T_Camps.Controllers;
 
@@ -29,6 +30,7 @@ public class HomeController : Controller
             .FirstOrDefaultAsync();
 
         await SeedDataAsync();
+        ViewData["Title"] = "Home Page";
         return View(company);
     }
 
@@ -48,9 +50,25 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult About()
+    public async Task<IActionResult> About()
     {
-        return View();
+        var model = await _context.Members
+            .Include(m => m.Company)
+            .OrderBy(m => m.Id)
+            .Select(m => new AboutViewModel
+            {
+                Name = m.Name,
+                Email = m.Email,
+                CompanyName = m.Company.Name,
+                CompanyEmail = m.Company.Email,
+                Role = m.Role,
+                About = m.About,
+                Picture = m.Picture
+            })
+            .ToListAsync();
+
+        ViewData["Title"] = "About";
+        return View(model);
     }
 
     public IActionResult Events()
@@ -91,6 +109,21 @@ public class HomeController : Controller
             .FirstOrDefaultAsync();
 
         return View(company);
+    }
+
+    public async Task<IActionResult> BecomeSponsor()
+    {
+        return View();
+    }
+
+    public async Task<IActionResult> BecomeMember()
+    {
+        return View();
+    }
+
+    public async Task<IActionResult> JoinEvent()
+    {
+        return View();
     }
 
     public IActionResult ChangeLanguage(string lang)

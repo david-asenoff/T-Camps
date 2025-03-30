@@ -28,6 +28,9 @@ namespace T_Camps.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var eventDetail = await _context.Events
+                .Include(e => e.Company)
+                .Include(e => e.Schedules)
+                .Include(e => e.Speakers) // Optional, if you're also showing speakers
                 .FirstOrDefaultAsync(e => e.Id == id);
 
             if (eventDetail == null)

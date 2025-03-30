@@ -1,9 +1,47 @@
-﻿@{
+﻿@using T_Camps.ViewModels
+@model IList<AboutViewModel>
+@{
     ViewData["Title"] = "About";
 }
 
 <div class="page-wrapper">
 
+    <!--Team Page Start-->
+    <section class="team-page">
+        <div class="container">
+            <div class="row">
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <!-- Team One Single Start -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="100ms">
+                        <div class="team-one__single">
+                            <div class="team-one__img-box">
+                                <div class="team-one__img">
+                                    <img src="@Model[i].Picture" alt="">
+                                    <div class="team-one__content">
+                                        <h4 class="team-one__name"><a href="team-details.html">@Model[i].Name</a></h4>
+                                        <p class="team-one__sub-title">@Model[i].Role</p>
+                                    </div>
+                                    <div class="team-one__content-hover">
+                                        <h4 class="team-one__name-hover">
+                                            <a href="team-details.html">@Model[i].Name</a>
+                                        </h4>
+                                        <p class="team-one__sub-title-hover">@Model[i].Role</p>
+                                        <p class="team-one__text-hover">
+                                            @Model[i].About
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Team One Single End -->
+                }
+                
+            </div>
+        </div>
+    </section>
+    <!--Team Page End-->
 
     <!-- Event One Start -->
     <section class="event-one event-three">

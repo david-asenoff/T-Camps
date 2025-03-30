@@ -2,13 +2,131 @@
 
 @{
     ViewData["Title"] = Model.Name;
+    var orderedSchedules = Model.Schedules.OrderBy(s => s.Time).ToList();
 }
 
-<h1>@Model.Name</h1>
+<section class="event-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-7">
+                <div class="event-details__left">
+                    <div class="event-details__img">
+                        <img src="@Model.MainImageUrl" alt="@Model.Name" />
+                    </div>
+                    <div class="event-details__main-tab-box">
+                        <ul class="event-details__meta list-unstyled">
+                            <li>
+                                <p><span class="icon-clock"></span> @Model.StartDate.ToString("dd MMM yyyy") - @Model.EndDate.ToString("dd MMM yyyy")</p>
+                            </li>
+                            <li>
+                                <p><span class="icon-pin"></span> @Model.Location</p>
+                            </li>
+                        </ul>
 
-<p><strong>Date:</strong> @Model.StartDate.ToString("dd MMMM yyyy") - @Model.EndDate.ToString("dd MMMM yyyy")</p>
-<p><strong>Location:</strong> @Model.Location</p>
-<p><strong>Price:</strong> @Model.Price.ToString("C")</p>
+                        <h3 class="event-details__title-1">@Model.Name</h3>
+                        <p class="event-details__text-1">@Model.DescriptionFull</p>
 
-<h2>Event Details</h2>
-<p>@Model.Name</p>
+                        @if (Model.GalleryImageUrls?.Any() == true)
+                        {
+                            <div class="event-details__img-box">
+                                <div class="row">
+                                    @foreach (var imgUrl in Model.GalleryImageUrls.Take(4))
+                                    {
+                                        <div class="col-xl-6">
+                                            <div class="event-details__img-box-img">
+                                                <img src="@imgUrl" alt="Gallery Image" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                        @if (orderedSchedules.Any())
+                        {
+                            <div class="event-details__points-box">
+                                <ul class="event-details__points list-unstyled">
+                                    @foreach (var schedule in orderedSchedules)
+                                    {
+                                        <li>
+                                            <div class="icon">
+                                                <span class="icon-double-angle"></span>
+                                            </div>
+                                            <p><strong>@schedule.Time.ToString("dd.MM.yyyy HH:mm"):</strong> @schedule.Description</p>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-5">
+                <div class="event-details__right">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="event-details__right">
+                            @if (Model?.Speakers?.Any() == true)
+                            {
+                                <div class="event-details__speakers">
+                                    <h3 class="event-details__speakers-title">Лектори</h3>
+                                    <p class="event-details__speakers-sub-title">@Model.Speakers.Count лектори</p>
+                                    @foreach (var speaker in Model.Speakers)
+                                    {
+                                        <p><strong>@speaker.Name</strong>: @speaker.Bio</p>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="event-details__ticket">
+                        <h3 class="event-details__ticket-title">Нямаш билет?</h3>
+                        <p class="event-details__ticket-sub-title">Обади се сега</p>
+                        <div class="event-details__ticket-icon">
+                            <span class="icon-call"></span>
+                        </div>
+                        <p class="event-details__ticket-sub-title-2">За бърза регистрация</p>
+                        <h3 class="event-details__ticket-number">
+                            <a href="tel:@Model.Company.PhoneNumber">@Model.Company.PhoneNumber</a>
+                        </h3>
+                    </div>
+
+                    <div class="event-details__follow-us">
+                        <h3 class="event-details__follow-us-title">Последвай ни</h3>
+                        <div class="event-details__follow-us-social">
+                            @if (!string.IsNullOrEmpty(Model.Facebook))
+                            {
+                                <a href="@Model.Facebook" target="_blank"><span class="icon-facebook"></span></a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.X))
+                            {
+                                <a href="@Model.X" target="_blank"><span class="icon-fi"></span></a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Instagram))
+                            {
+                                <a href="@Model.Instagram" target="_blank"><span class="icon-instagram"></span></a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.LinkedIn))
+                            {
+                                <a href="@Model.LinkedIn" target="_blank"><span class="icon-linkedin-in"></span></a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.YouTube))
+                            {
+                                <a href="@Model.YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                            }
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.LocationMapEmbedUrl))
+                    {
+                        <div class="event-details__location">
+                            <h3 class="event-details__location-title">Локация</h3>
+                            <iframe src="@Model.LocationMapEmbedUrl" class="google-map__one" allowfullscreen=""></iframe>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
