@@ -212,6 +212,7 @@ a.termsA {
     color: white;
     text-align: center;
     padding: 10px;
+}
 
 .loading-component {
     position: fixed;
@@ -241,3 +242,28 @@ a.termsA {
     margin-top: 10px;
 
 }
+
+.join-event-section-custom {
+    margin-top: 2%;
+}
+
+.join-event-section-custom p {
+    margin-bottom: 1em; /* Adjust the value as needed */
+    margin-top: 1em; /* Adjust the value as needed */
+    line-height: 1.6; /* Adjust the value as needed */
+}
+
+.join-event-section-custom h2 {
+    color: white;
+    background-color: #333; /* Dark background color */
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+    .join-event-section-custom h2:hover {
+        border: 2px solid grey; /* White border on mouse over */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
