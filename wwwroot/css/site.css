@@ -267,3 +267,46 @@ a.termsA {
         border: 2px solid grey; /* White border on mouse over */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     }
+
+.becomeMember-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em;
+    background-color: black;
+    color: white;
+}
+
+    .becomeMember-summary-table th, .becomeMember-summary-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    .becomeMember-summary-table th {
+        background-color: #502222; /* Darker background color for th */
+        font-weight: bold;
+        font-size: 1.3em;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        text-shadow: 1px 1px 2px #000; /* Font shadow for th */
+    }
+
+    .becomeMember-summary-table tr:nth-child(even) {
+        background-color: #44444478; /* Different background color for even rows */
+    }
+
+    .becomeMember-summary-table tr:hover {
+        background-color: #555;
+    }
+
+    .becomeMember-summary-table th, .becomeMember-summary-table td {
+        transition: background-color 0.3s ease;
+    }
+
+.become-member-custom p {
+    margin-left: 0.25%;
+}
+
+
+
+
