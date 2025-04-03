@@ -6,8 +6,8 @@
 }
 
 @{
-    int numberOfPhotos = 3;
-    int columnWidth = 12 / Math.Min(Model.GalleryImageUrls?.Count, numberOfPhotos);
+    int numberOfPhotos = 4;
+    int columnWidth = 12 / numberOfPhotos;
     string columnClass = $"col-xl-{columnWidth}";
 }
 
@@ -70,7 +70,7 @@
 
             <div class="col-xl-4 col-lg-5">
                 <div class="event-details__right">
-                    <div class="col-xl-4 col-lg-5">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="event-details__right">
                             @if (Model?.Speakers?.Any() == true)
                             {
