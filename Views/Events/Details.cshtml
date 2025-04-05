@@ -5,13 +5,19 @@
     var orderedSchedules = Model.Schedules.OrderBy(s => s.Time).ToList();
 }
 
+@{
+    int numberOfPhotos = 4;
+    int columnWidth = 12 / numberOfPhotos;
+    string columnClass = $"col-xl-{columnWidth}";
+}
+
 <section class="event-details">
     <div class="container">
         <div class="row">
             <div class="col-xl-8 col-lg-7">
                 <div class="event-details__left">
                     <div class="event-details__img">
-                        <img src="@Model.MainImageUrl" alt="@Model.Name" />
+                        <img src="/assets/@Model.MainImageUrl" alt="@Model.Name" />
                     </div>
                     <div class="event-details__main-tab-box">
                         <ul class="event-details__meta list-unstyled">
@@ -30,11 +36,11 @@
                         {
                             <div class="event-details__img-box">
                                 <div class="row">
-                                    @foreach (var imgUrl in Model.GalleryImageUrls.Take(4))
+                                    @foreach (var imgUrl in Model.GalleryImageUrls.Take(numberOfPhotos))
                                     {
-                                        <div class="col-xl-6">
+                                         <div class="@columnClass">
                                             <div class="event-details__img-box-img">
-                                                <img src="@imgUrl" alt="Gallery Image" />
+                                                <img src="/assets/@imgUrl" alt="Gallery Image" />
                                             </div>
                                         </div>
                                     }
@@ -64,7 +70,7 @@
 
             <div class="col-xl-4 col-lg-5">
                 <div class="event-details__right">
-                    <div class="col-xl-4 col-lg-5">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="event-details__right">
                             @if (Model?.Speakers?.Any() == true)
                             {
