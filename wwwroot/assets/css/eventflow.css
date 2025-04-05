@@ -9462,7 +9462,7 @@ ul {
 .service-details__faq-box {
   position: relative;
   display: block;
-  margin-top: 61px;
+  margin-top: 2.5%;
   counter-reset: count;
 }
 

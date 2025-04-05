@@ -212,6 +212,7 @@ a.termsA {
     color: white;
     text-align: center;
     padding: 10px;
+}
 
 .loading-component {
     position: fixed;
@@ -241,3 +242,71 @@ a.termsA {
     margin-top: 10px;
 
 }
+
+.join-event-section-custom {
+    margin-top: 2%;
+}
+
+.join-event-section-custom p {
+    margin-bottom: 1em; /* Adjust the value as needed */
+    margin-top: 1em; /* Adjust the value as needed */
+    line-height: 1.6; /* Adjust the value as needed */
+}
+
+.join-event-section-custom h2 {
+    color: white;
+    background-color: #333; /* Dark background color */
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+    .join-event-section-custom h2:hover {
+        border: 2px solid grey; /* White border on mouse over */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+
+.becomeMember-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em;
+    background-color: black;
+    color: white;
+}
+
+    .becomeMember-summary-table th, .becomeMember-summary-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    .becomeMember-summary-table th {
+        background-color: #502222; /* Darker background color for th */
+        font-weight: bold;
+        font-size: 1.3em;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        text-shadow: 1px 1px 2px #000; /* Font shadow for th */
+    }
+
+    .becomeMember-summary-table tr:nth-child(even) {
+        background-color: #44444478; /* Different background color for even rows */
+    }
+
+    .becomeMember-summary-table tr:hover {
+        background-color: #555;
+    }
+
+    .becomeMember-summary-table th, .becomeMember-summary-table td {
+        transition: background-color 0.3s ease;
+    }
+
+.become-member-custom p {
+    margin-left: 0.25%;
+}
+
+
+
+
