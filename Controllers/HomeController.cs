@@ -125,6 +125,10 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult ComingSoon()
+    {
+        return View();
+    }
 
     public IActionResult ChangeLanguage(string lang)
     {
