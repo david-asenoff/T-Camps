@@ -258,11 +258,9 @@ public class DataSeeder
                     StartDate = new DateTime(2025, 10, 1),
                     EndDate = new DateTime(2025, 10, 8),
                     Price = 0.00m,
-                    CompanyId = _context.Companies.FirstOrDefault().Id,
-                    DescriptionShort = "🔥 Театър | 🎶 Музика | 💃 Танци | 🏐 Спорт | 🎓 Лекции",
+                    CompanyId = 1,
                     DescriptionFull = "Premium Camp е мястото, където младите хора се събират за незабравимо преживяване. Импровизационен театър, музика, танци, спортни игри, лекции и вечерни събития като DJ партита и лагерен огън – всичко това в рамките на 7 дни в красивата природа на Utopia Forest.",
-                    MainImageUrl = "/images/events/premium-camp-2025/main.jpg",
-                    LocationMapEmbedUrl = "https://www.google.de/maps/place/Hotel+Utopia+Forest/@42.4442987,27.5565219,3a,75y,90t/data=!3m8!1e2!3m6!1shttps:%2F%2Fimages.trvl-media.com%2Flodging%2F45000000%2F44230000%2F44227000%2F44226902%2Fbe736221_z.jpg!2e7!3e27!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-proxy%2FALd4DhHs_HqoXxBsLvynwJxTif3xnwR_vNNHU_MNkcf2M1zCA1__DL8wN2CWmxy9bUiU3rkn18AgI8fYHheU6z8WQvCD9skuuVsVnN3IMUHj2pZvp5hILPItd61hN65ZFp1hk-O_9klWJJ82nitPlo-3Ox97KLcrhUo3uNLIX0rHLoSpsLk0mFwqTvFnyA%3Dw129-h86-k-no!7i1000!8i666!4m10!3m9!1s0x40a6c1cf8eb2d3d3:0x7f57c4568c3a8f30!5m2!4m1!1i2!8m2!3d42.4443119!4d27.5557038!10e5!16s%2Fg%2F11h8l5sv0g?entry=ttu&g_ep=EgoyMDI1MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+                    DescriptionShort = "🔥 Театър | 🎶 Музика | 💃 Танци | 🏐 Спорт | 🎓 Лекции",
                     GalleryImageUrls = new List<string>
                     {
                         "/images/events/premium-camp-2025/gallery1.jpg",
@@ -270,20 +268,12 @@ public class DataSeeder
                         "/images/events/premium-camp-2025/gallery3.jpg",
                         "/images/events/premium-camp-2025/gallery4.jpg"
                     },
+                    LocationMapEmbedUrl = "https://www.google.de/maps/place/Hotel+Utopia+Forest/@42.4443119,27.5531289,17z/data=!4m9!3m8!1s0x40a6c1cf8eb2d3d3:0x7f57c4568c3a8f30!5m2!4m1!1i2!8m2!3d42.4443119!4d27.5557038!16s%2Fg%2F11h8l5sv0g?entry=ttu&g_ep=EgoyMDI1MDMzMS4wIKXMDSoASAFQAw%3D%3D",
+                    MainImageUrl = "/images/events/premium-camp-2025/main.jpg",
                     Schedules = new List<Schedule>
                     {
                         new Schedule { Description = "Пристигане и настаняване", Time = new DateTime(2025, 10, 1, 16, 0, 0) },
                         new Schedule { Description = "Откриващ концерт", Time = new DateTime(2025, 10, 1, 20, 30, 0) },
-                        new Schedule { Description = "DJ парти", Time = new DateTime(2025, 10, 2, 21, 0, 0) },
-                        new Schedule { Description = "Спортна игра на плажа", Time = new DateTime(2025, 10, 3, 9, 15, 0) },
-                        new Schedule { Description = "Лекция / Семинар 1", Time = new DateTime(2025, 10, 2, 14, 15, 0) },
-                        new Schedule { Description = "Лекция / Семинар 2", Time = new DateTime(2025, 10, 3, 14, 15, 0) },
-                        new Schedule { Description = "Кино вечер на открито", Time = new DateTime(2025, 10, 4, 21, 0, 0) },
-                        new Schedule { Description = "Куиз и Лагерен огън", Time = new DateTime(2025, 10, 5, 21, 0, 0) },
-                        new Schedule { Description = "Караоке вечер и хоротека", Time = new DateTime(2025, 10, 6, 20, 0, 0) },
-                        new Schedule { Description = "Награждаване на мис и мистър лагер", Time = new DateTime(2025, 10, 7, 21, 0, 0) },
-                        new Schedule { Description = "Закриващ концерт", Time = new DateTime(2025, 10, 7, 21, 30, 0) },
-                        new Schedule { Description = "Изпращане", Time = new DateTime(2025, 10, 8, 9, 15, 0) }
                     },
                     Speakers = new List<Speaker>
                     {
@@ -298,28 +288,48 @@ public class DataSeeder
                     StartDate = new DateTime(2025, 11, 5),
                     EndDate = new DateTime(2025, 11, 7),
                     Price = 2.00m,
-                    CompanyId = _context.Companies.FirstOrDefault().Id,
+                    CompanyId = 1,
+                    DescriptionFull = "VIP Camp е мястото, където младите хора се събират за незабравимо преживяване. Импровизационен театър, музика, танци, спортни игри, лекции и вечерни събития като DJ партита и лагерен огън – всичко това в рамките на 7 дни в красивата природа на Utopia Forest.",
                     DescriptionShort = "🔥 Театър | 🎶 Музика | 💃 Танци | 🏐 Спорт | 🎓 Лекции",
-                    DescriptionFull = "VIP Camp е мястото, където младите хора се събират за незабравимо преживяване. Импровизационен театър, музика, танци, спортни игри, лекции и вечерни събития като DJ партита и лагерен огън – всичко това в рамките на 3 дни в красивата природа на Varna.",
-                    MainImageUrl = "/images/events/vip-camp-2025/main.jpg",
-                    LocationMapEmbedUrl = "https://www.google.bg/maps/place/Rosslyn+Dimyat+Hotel+Varna/@43.2098649,27.9262516,17z/data=!3m2!4b1!5s0x40a4540f75a98a9b:0x8a6cba320022fcdc!4m9!3m8!1s0x40a4540f0aa073a5:0xbdf6c46bb9b60967!5m2!4m1!1i2!8m2!3d43.2098649!4d27.9288265!16s%2Fg%2F11cm_hsrn4?entry=ttu&g_ep=EgoyMDI1MDMzMS4wIKXMDSoASAFQAw%3D%3D",
                     GalleryImageUrls = new List<string>
                     {
-                        "/images/events/vip-camp-2025/gallery1.jpg",
-                        "/images/events/vip-camp-2025/gallery2.jpg",
-                        "/images/events/vip-camp-2025/gallery3.jpg",
-                        "/images/events/vip-camp-2025/gallery4.jpg"
+                        "/images/events/premium-camp-2025/gallery1.jpg",
+                        "/images/events/premium-camp-2025/gallery2.jpg"
                     },
+                    LocationMapEmbedUrl = "https://www.google.bg/maps/place/Rosslyn+Dimyat+Hotel+Varna/@43.2098649,27.9262516,17z/data=!3m2!4b1!5s0x40a4540f75a98a9b:0x8a6cba320022fcdc!4m9!3m8!1s0x40a4540f0aa073a5:0xbdf6c46bb9b60967!5m2!4m1!1i2!8m2!3d43.2098649!4d27.9288265!16s%2Fg%2F11cm_hsrn4?entry=ttu&g_ep=EgoyMDI1MDMzMS4wIKXMDSoASAFQAw%3D%3D",
+                    MainImageUrl = "/images/events/vip-camp-2025/main.jpg",
                     Schedules = new List<Schedule>
                     {
                         new Schedule { Description = "Пристигане и настаняване", Time = new DateTime(2025, 11, 5, 16, 0, 0) },
                         new Schedule { Description = "Откриващ концерт", Time = new DateTime(2025, 11, 5, 20, 30, 0) },
-                        new Schedule { Description = "DJ парти", Time = new DateTime(2025, 11, 6, 21, 0, 0) },
-                        new Schedule { Description = "Спортна игра на плажа", Time = new DateTime(2025, 11, 6, 9, 15, 0) },
-                        new Schedule { Description = "Лекция / Семинар 1", Time = new DateTime(2025, 11, 6, 14, 15, 0) },
-                        new Schedule { Description = "Кино вечер на открито", Time = new DateTime(2025, 11, 6, 21, 0, 0) },
-                        new Schedule { Description = "Закриващ концерт", Time = new DateTime(2025, 11, 7, 21, 30, 0) },
-                        new Schedule { Description = "Изпращане", Time = new DateTime(2025, 11, 7, 9, 15, 0) }
+                    },
+                    Speakers = new List<Speaker>
+                    {
+                        new Speaker { Name = "Иван Петров", Bio = "Лектор по личностно развитие и мотивация." },
+                        new Speaker { Name = "Мария Георгиева", Bio = "Професионален музикален педагог и коуч по сценично поведение." }
+                    }
+                },
+                new Event
+                {
+                    Name = "Premium Camp 2025 - II",
+                    Location = "Utopia Forest Hotel, Bulgaria",
+                    StartDate = new DateTime(2025, 10, 1),
+                    EndDate = new DateTime(2025, 10, 8),
+                    Price = 0.00m,
+                    CompanyId = 1,
+                    DescriptionFull = "Premium Camp е мястото, където младите хора се събират за незабравимо преживяване. Импровизационен театър, музика, танци, спортни игри, лекции и вечерни събития като DJ партита и лагерен огън – всичко това в рамките на 7 дни в красивата природа на Utopia Forest.",
+                    DescriptionShort = "🔥 Театър | 🎶 Музика | 💃 Танци | 🏐 Спорт | 🎓 Лекции",
+                    GalleryImageUrls = new List<string>
+                    {
+                        "/images/events/premium-camp-2025/gallery1.jpg",
+                        "/images/events/premium-camp-2025/gallery2.jpg"
+                    },
+                    LocationMapEmbedUrl = "https://www.google.de/maps/place/Hotel+Utopia+Forest/@42.4443119,27.5531289,17z/data=!4m9!3m8!1s0x40a6c1cf8eb2d3d3:0x7f57c4568c3a8f30!5m2!4m1!1i2!8m2!3d42.4443119!4d27.5557038!16s%2Fg%2F11h8l5sv0g?entry=ttu&g_ep=EgoyMDI1MDMzMS4wIKXMDSoASAFQAw%3D%3D",
+                    MainImageUrl = "/images/events/premium-camp-2025/main.jpg",
+                    Schedules = new List<Schedule>
+                    {
+                        new Schedule { Description = "Пристигане и настаняване", Time = new DateTime(2025, 10, 1, 16, 0, 0) },
+                        new Schedule { Description = "Откриващ концерт", Time = new DateTime(2025, 10, 1, 20, 30, 0) },
                     },
                     Speakers = new List<Speaker>
                     {
@@ -328,6 +338,9 @@ public class DataSeeder
                     }
                 }
             };
+
+
+
 
             _context.Events.AddRange(events);
             await _context.SaveChangesAsync();
