@@ -1,10 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace T_Camps.Models
+namespace T_Camps.Data
 {
-    public class Speaker
+    public class Speaker : BaseDeletableModel<int>
     {
-        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

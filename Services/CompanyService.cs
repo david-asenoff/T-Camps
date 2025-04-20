@@ -1,5 +1,4 @@
 ﻿using T_Camps.Data;
-using T_Camps.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace T_Camps.Services

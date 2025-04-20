@@ -1,11 +1,9 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace T_Camps.Models
+namespace T_Camps.Data
 {
-    public class Schedule
+    public class Schedule : BaseDeletableModel<int>
     {
-        public int Id { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]

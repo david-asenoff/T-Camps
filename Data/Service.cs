@@ -1,10 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace T_Camps.Models
+namespace T_Camps.Data
 {
-    public class Service
+    public class Service : BaseDeletableModel<int>
     {
-        public int Id { get; set; }
         [Required]
         public string Description { get; set; }
         public int CompanyId { get; set; }

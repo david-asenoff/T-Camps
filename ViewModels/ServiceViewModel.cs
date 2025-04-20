@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using T_Camps.Models;
+﻿using T_Camps.Data;
 
 namespace T_Camps.ViewModels
 {

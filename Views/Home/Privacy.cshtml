@@ -1,6 +1,60 @@
+﻿@using T_Camps.ViewModels
+@model IList<TermsAndConditionsViewModel>
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    this.ViewData["Title"] = "Общи условия";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="mainContent">
+<h1 class="termsH1">Условия за ползване</h1>
+
+<p class="termsP">Добре дошли на нашия уебсайт. Ако продължите да разглеждате и използвате този уебсайт, вие се съгласявате да спазвате и да бъдете обвързани от следните условия за ползване, които заедно с нашата политика за поверителност управляват отношенията на T-Camps с вас във връзка с този уебсайт.</p>
+
+    <section class="faq-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="faq-page__left">
+                        <div class="accrodion-grp faq-one-accrodion faq-one-accrodion-1" data-grp-name="faq-one-accrodion-1">
+                        @foreach (var term in Model.Take(Model.Count() / 2))
+                        {
+                            <div class="accrodion">
+                                <div class="accrodion-title">
+                                    <h4>@term.SectionTitle</h4>
+                                    <div class="faq-one-accrodion__count"></div>
+                                </div>
+                                <div class="accrodion-content">
+                                    <div class="inner">
+                                        <p>@term.Content</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="faq-page__right">
+                        <div class="accrodion-grp faq-one-accrodion faq-one-accrodion-1" data-grp-name="faq-one-accrodion-1">
+                        @foreach (var term in Model.Skip(Model.Count() / 2))
+                        {
+                            <div class="accrodion">
+                                <div class="accrodion-title">
+                                    <h4>@term.SectionTitle</h4>
+                                    <div class="faq-one-accrodion__count"></div>
+                                </div>
+                                <div class="accrodion-content">
+                                    <div class="inner">
+                                        <p>@term.Content</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>

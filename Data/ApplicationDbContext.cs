@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using T_Camps.Models;
 using T_Camps.ViewModels;
 
 namespace T_Camps.Data
@@ -9,9 +8,11 @@ namespace T_Camps.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            // Check and create the database if it doesn't exist
+            //Database.EnsureCreated();
         }
 
-        public DbSet<ClientViewModel> Clients { get; set; }
+        public DbSet<Client> Clients { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Mission> Missions { get; set; }
         public DbSet<Service> Services { get; set; }
