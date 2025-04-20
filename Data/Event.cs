@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace T_Camps.Models
+namespace T_Camps.Data
 {
-    public class Event
+    public class Event : BaseDeletableModel<int>
     {
-        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }

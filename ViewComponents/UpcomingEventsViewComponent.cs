@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using T_Camps.Data;
 using T_Camps.ViewModels;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace T_Camps.ViewComponents

@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T_Camps.Data;
-using T_Camps.Models;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace T_Camps.Controllers
 {

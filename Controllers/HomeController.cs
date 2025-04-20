@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Globalization;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T_Camps.Data;
@@ -24,19 +25,29 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var company = await _context.Companies
-            .Include(c => c.Missions)
-            .Include(c => c.Services)
-            .FirstOrDefaultAsync();
-
         await SeedDataAsync();
+        var company = await _context.Companies
+    .Include(c => c.Missions)
+    .Include(c => c.Services)
+    .FirstOrDefaultAsync();
         ViewData["Title"] = "Home Page";
         return View(company);
     }
 
-    public IActionResult Privacy()
+    public async Task<IActionResult> Privacy()
     {
-        return View();
+        var model =  await _context.TermsAndConditions
+            .Include(tc => tc.Company)
+            .OrderBy(tc => tc.Id)
+            .Select(tc => new TermsAndConditionsViewModel
+            {
+                CompanyName = tc.Company.Name,
+                Content = tc.Content,
+                SectionTitle = tc.SectionTitle,
+            })
+            .ToListAsync();
+        ViewData["Title"] = "Privacy";
+        return View(model);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -67,7 +78,6 @@ public class HomeController : Controller
             })
             .ToListAsync();
 
-        ViewData["Title"] = "About";
         return View(model);
     }
 
@@ -169,13 +179,13 @@ public class HomeController : Controller
 
     public async Task<IActionResult> SeedDataAsync()
     {
-        await _dataSeeder.SeedClientsAsync();
         await _dataSeeder.SeedCompaniesAsync();
         await _dataSeeder.SeedMissionsAsync();
         await _dataSeeder.SeedServicesAsync();
         await _dataSeeder.SeedMembersAsync();
         await _dataSeeder.SeedTermsAndConditionsAsync();
         await _dataSeeder.SeedEventsAsync();
+        await _dataSeeder.SeedClientsAsync();
         return RedirectToAction(nameof(Index));
     }
 }

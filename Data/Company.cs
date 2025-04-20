@@ -1,11 +1,9 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace T_Camps.Models
+namespace T_Camps.Data
 {
-    public class Company
+    public class Company : BaseDeletableModel<int>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
 
         [Required]
@@ -17,7 +15,7 @@ namespace T_Camps.Models
         public List<Mission> Missions { get; set; }
         public List<Service> Services { get; set; }
         public List<Member> Members { get; set; }
-        public TermsAndConditions TermsAndConditions { get; set; }
+        public List<TermsAndConditions> TermsAndConditions { get; set; }
         [Required]
         public string JoinInformation { get; set; }
         [Required]

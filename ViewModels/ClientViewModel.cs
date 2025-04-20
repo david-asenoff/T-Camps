@@ -1,26 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using T_Camps.Data;
 
 namespace T_Camps.ViewModels
 {
-    public class ClientViewModel
+    public class ClientViewModel : Client
     {
-        public int Id { get; set; }
-
-        [Required]
-        public string FirstName { get; set; }
-
-        [Required]
-        public string LastName { get; set; }
-
-        [Required]
-        [Phone]
-        public string Phone { get; set; }
-
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-
-
-        public string Description { get; set; }
     }
 }

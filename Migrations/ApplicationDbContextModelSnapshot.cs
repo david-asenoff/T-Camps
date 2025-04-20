@@ -3,7 +3,6 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using T_Camps.Data;
 
@@ -12,11 +11,9 @@ using T_Camps.Data;
 namespace T_Camps.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250330171929_AddAboutForMember")]
-    partial class AddAboutForMember
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +22,52 @@ namespace T_Camps.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("T_Camps.Models.Company", b =>
+            modelBuilder.Entity("T_Camps.Data.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("T_Camps.Data.Company", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,6 +78,12 @@ namespace T_Camps.Migrations
                     b.Property<string>("About")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -49,6 +97,9 @@ namespace T_Camps.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("JoinInformation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -56,6 +107,9 @@ namespace T_Camps.Migrations
                     b.Property<string>("LinkedIn")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Moto")
                         .IsRequired()
@@ -86,7 +140,7 @@ namespace T_Camps.Migrations
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Event", b =>
+            modelBuilder.Entity("T_Camps.Data.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -96,6 +150,12 @@ namespace T_Camps.Migrations
 
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DescriptionFull")
                         .IsRequired()
@@ -118,6 +178,9 @@ namespace T_Camps.Migrations
                     b.Property<string>("Instagram")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LinkedIn")
                         .HasColumnType("nvarchar(max)");
 
@@ -132,6 +195,9 @@ namespace T_Camps.Migrations
                     b.Property<string>("MainImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -156,7 +222,7 @@ namespace T_Camps.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Member", b =>
+            modelBuilder.Entity("T_Camps.Data.Member", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -171,11 +237,27 @@ namespace T_Camps.Migrations
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Picture")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -190,7 +272,7 @@ namespace T_Camps.Migrations
                     b.ToTable("Members");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Mission", b =>
+            modelBuilder.Entity("T_Camps.Data.Mission", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -201,9 +283,21 @@ namespace T_Camps.Migrations
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -212,7 +306,7 @@ namespace T_Camps.Migrations
                     b.ToTable("Missions");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Schedule", b =>
+            modelBuilder.Entity("T_Camps.Data.Schedule", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -220,12 +314,24 @@ namespace T_Camps.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EventId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
@@ -237,7 +343,7 @@ namespace T_Camps.Migrations
                     b.ToTable("Schedules");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Service", b =>
+            modelBuilder.Entity("T_Camps.Data.Service", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -248,9 +354,21 @@ namespace T_Camps.Migrations
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -259,7 +377,7 @@ namespace T_Camps.Migrations
                     b.ToTable("Services");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Speaker", b =>
+            modelBuilder.Entity("T_Camps.Data.Speaker", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -271,8 +389,20 @@ namespace T_Camps.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("EventId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -285,7 +415,7 @@ namespace T_Camps.Migrations
                     b.ToTable("Speakers");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.TermsAndConditions", b =>
+            modelBuilder.Entity("T_Camps.Data.TermsAndConditions", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -300,50 +430,33 @@ namespace T_Camps.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SectionTitle")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CompanyId")
-                        .IsUnique();
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("TermsAndConditions");
                 });
 
-            modelBuilder.Entity("T_Camps.ViewModels.ClientViewModel", b =>
+            modelBuilder.Entity("T_Camps.Data.Event", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Clients");
-                });
-
-            modelBuilder.Entity("T_Camps.Models.Event", b =>
-                {
-                    b.HasOne("T_Camps.Models.Company", "Company")
+                    b.HasOne("T_Camps.Data.Company", "Company")
                         .WithMany("Events")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -352,9 +465,9 @@ namespace T_Camps.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Member", b =>
+            modelBuilder.Entity("T_Camps.Data.Member", b =>
                 {
-                    b.HasOne("T_Camps.Models.Company", "Company")
+                    b.HasOne("T_Camps.Data.Company", "Company")
                         .WithMany("Members")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -363,9 +476,9 @@ namespace T_Camps.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Mission", b =>
+            modelBuilder.Entity("T_Camps.Data.Mission", b =>
                 {
-                    b.HasOne("T_Camps.Models.Company", "Company")
+                    b.HasOne("T_Camps.Data.Company", "Company")
                         .WithMany("Missions")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -374,9 +487,9 @@ namespace T_Camps.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Schedule", b =>
+            modelBuilder.Entity("T_Camps.Data.Schedule", b =>
                 {
-                    b.HasOne("T_Camps.Models.Event", "Event")
+                    b.HasOne("T_Camps.Data.Event", "Event")
                         .WithMany("Schedules")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -385,9 +498,9 @@ namespace T_Camps.Migrations
                     b.Navigation("Event");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Service", b =>
+            modelBuilder.Entity("T_Camps.Data.Service", b =>
                 {
-                    b.HasOne("T_Camps.Models.Company", "Company")
+                    b.HasOne("T_Camps.Data.Company", "Company")
                         .WithMany("Services")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -396,9 +509,9 @@ namespace T_Camps.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Speaker", b =>
+            modelBuilder.Entity("T_Camps.Data.Speaker", b =>
                 {
-                    b.HasOne("T_Camps.Models.Event", "Event")
+                    b.HasOne("T_Camps.Data.Event", "Event")
                         .WithMany("Speakers")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -407,18 +520,18 @@ namespace T_Camps.Migrations
                     b.Navigation("Event");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.TermsAndConditions", b =>
+            modelBuilder.Entity("T_Camps.Data.TermsAndConditions", b =>
                 {
-                    b.HasOne("T_Camps.Models.Company", "Company")
-                        .WithOne("TermsAndConditions")
-                        .HasForeignKey("T_Camps.Models.TermsAndConditions", "CompanyId")
+                    b.HasOne("T_Camps.Data.Company", "Company")
+                        .WithMany("TermsAndConditions")
+                        .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Company", b =>
+            modelBuilder.Entity("T_Camps.Data.Company", b =>
                 {
                     b.Navigation("Events");
 
@@ -428,11 +541,10 @@ namespace T_Camps.Migrations
 
                     b.Navigation("Services");
 
-                    b.Navigation("TermsAndConditions")
-                        .IsRequired();
+                    b.Navigation("TermsAndConditions");
                 });
 
-            modelBuilder.Entity("T_Camps.Models.Event", b =>
+            modelBuilder.Entity("T_Camps.Data.Event", b =>
                 {
                     b.Navigation("Schedules");
 
