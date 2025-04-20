@@ -23,6 +23,19 @@
                         <li>
                             <a asp-controller="Home" asp-action="About">За Нас</a>
                         </li>
+
+                        <li class="dropdown">
+                            <a asp-controller="Events" asp-action="Index">Събития</a>
+                            <ul>
+                                <li>
+                                    <a asp-controller="Home" asp-action="Events">Стари</a>
+                                </li>
+                                <li class="current">
+                                    <a asp-controller="Events" asp-action="Index">Нови</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li>
                             <a asp-controller="Home" asp-action="Events">Събития</a>
                         </li>

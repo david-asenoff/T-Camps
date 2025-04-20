@@ -152,19 +152,19 @@ public class DataSeeder
                 },
                 Members = new List<Member>
                 {
-                    new Member { Name = "Тони Огнянов", 
-                        Role = "Председател на Управителния съвет", 
+                    new Member { Name = "Тони Огнянов",
+                        Role = "Председател на Управителния съвет",
                         Email = "tonkisa1379@gmail.com",
                     About = "Актоьор, фитнес гуру, предприемач, психолог, инфлуенсър",
                     Picture = "\\assets\\images\\team\\member_1.jpg"},
-                    new Member { Name = "Кристиян Левтеров", 
-                        Role = "Член", 
+                    new Member { Name = "Кристиян Левтеров",
+                        Role = "Член",
                         Email = "tonkisa1379@gmail.com",
                     About = "Икономист, маркетолог и програмист",
                     Picture = "\\assets\\images\\team\\member_2.jpg"},
-                    new Member { 
-                        Name = "Матея Христов", 
-                        Role = "Член", 
+                    new Member {
+                        Name = "Матея Христов",
+                        Role = "Член",
                         Email = "tonkisa1379@gmail.com",
                     About = "Дизайнер, финансист и диетолог",
                     Picture = "\\assets\\images\\team\\member_3.jpg"},
@@ -248,49 +248,99 @@ public class DataSeeder
     {
         if (!_context.Events.Any())
         {
+
             var events = new List<Event>
-        {
-            new Event
             {
-                Name = "Premium Camp 2025",
-                Location = "Utopia Forest Hotel, Bulgaria",
-                StartDate = new DateTime(2025, 10, 1),
-                EndDate = new DateTime(2025, 10, 8),
-                Price = 0.00m,
-                CompanyId = _context.Companies.FirstOrDefault().Id,
-                DescriptionShort = "🔥 Театър | 🎶 Музика | 💃 Танци | 🏐 Спорт | 🎓 Лекции",
-                DescriptionFull = "Premium Camp е мястото, където младите хора се събират за незабравимо преживяване. Импровизационен театър, музика, танци, спортни игри, лекции и вечерни събития като DJ партита и лагерен огън – всичко това в рамките на 7 дни в красивата природа на Utopia Forest.",
-                MainImageUrl = "/images/events/premium-camp-2025/main.jpg",
-                LocationMapEmbedUrl = "https://www.google.com/maps/embed?pb=...",
-                GalleryImageUrls = new List<string>
+                new Event
                 {
-                    "/images/events/premium-camp-2025/gallery1.jpg",
-                    "/images/events/premium-camp-2025/gallery2.jpg"
+                    Name = "Premium Camp 2025",
+                    Location = "Utopia Forest Hotel, Bulgaria",
+                    StartDate = new DateTime(2025, 10, 1),
+                    EndDate = new DateTime(2025, 10, 8),
+                    Price = 0.00m,
+                    CompanyId = 1,
+                    DescriptionFull = "Premium Camp е мястото, където младите хора се събират за незабравимо преживяване. Импровизационен театър, музика, танци, спортни игри, лекции и вечерни събития като DJ партита и лагерен огън – всичко това в рамките на 7 дни в красивата природа на Utopia Forest.",
+                    DescriptionShort = "🔥 Театър | 🎶 Музика | 💃 Танци | 🏐 Спорт | 🎓 Лекции",
+                    GalleryImageUrls = new List<string>
+                    {
+                        "/images/events/premium-camp-2025/gallery1.jpg",
+                        "/images/events/premium-camp-2025/gallery2.jpg",
+                        "/images/events/premium-camp-2025/gallery3.jpg",
+                        "/images/events/premium-camp-2025/gallery4.jpg"
+                    },
+                    LocationMapEmbedUrl = "https://www.google.de/maps/place/Hotel+Utopia+Forest/@42.4443119,27.5531289,17z/data=!4m9!3m8!1s0x40a6c1cf8eb2d3d3:0x7f57c4568c3a8f30!5m2!4m1!1i2!8m2!3d42.4443119!4d27.5557038!16s%2Fg%2F11h8l5sv0g?entry=ttu&g_ep=EgoyMDI1MDMzMS4wIKXMDSoASAFQAw%3D%3D",
+                    MainImageUrl = "/images/events/premium-camp-2025/main.jpg",
+                    Schedules = new List<Schedule>
+                    {
+                        new Schedule { Description = "Пристигане и настаняване", Time = new DateTime(2025, 10, 1, 16, 0, 0) },
+                        new Schedule { Description = "Откриващ концерт", Time = new DateTime(2025, 10, 1, 20, 30, 0) },
+                    },
+                    Speakers = new List<Speaker>
+                    {
+                        new Speaker { Name = "Иван Петров", Bio = "Лектор по личностно развитие и мотивация." },
+                        new Speaker { Name = "Мария Георгиева", Bio = "Професионален музикален педагог и коуч по сценично поведение." }
+                    }
                 },
-
-                Schedules = new List<Schedule>
+                new Event
                 {
-                    new Schedule { Description = "Пристигане и настаняване", Time = new DateTime(2025, 10, 1, 16, 0, 0) },
-                    new Schedule { Description = "Откриващ концерт", Time = new DateTime(2025, 10, 1, 20, 30, 0) },
-                    new Schedule { Description = "DJ парти", Time = new DateTime(2025, 10, 2, 21, 0, 0) },
-                    new Schedule { Description = "Спортна игра на плажа", Time = new DateTime(2025, 10, 3, 9, 15, 0) },
-                    new Schedule { Description = "Лекция / Семинар 1", Time = new DateTime(2025, 10, 2, 14, 15, 0) },
-                    new Schedule { Description = "Лекция / Семинар 2", Time = new DateTime(2025, 10, 3, 14, 15, 0) },
-                    new Schedule { Description = "Кино вечер на открито", Time = new DateTime(2025, 10, 4, 21, 0, 0) },
-                    new Schedule { Description = "Куиз и Лагерен огън", Time = new DateTime(2025, 10, 5, 21, 0, 0) },
-                    new Schedule { Description = "Караоке вечер и хоротека", Time = new DateTime(2025, 10, 6, 20, 0, 0) },
-                    new Schedule { Description = "Награждаване на мис и мистър лагер", Time = new DateTime(2025, 10, 7, 21, 0, 0) },
-                    new Schedule { Description = "Закриващ концерт", Time = new DateTime(2025, 10, 7, 21, 30, 0) },
-                    new Schedule { Description = "Изпращане", Time = new DateTime(2025, 10, 8, 9, 15, 0) }
+                    Name = "VIP Camp 2025",
+                    Location = "bul. Knyaz Boris I 111, 9002 Varna",
+                    StartDate = new DateTime(2025, 11, 5),
+                    EndDate = new DateTime(2025, 11, 7),
+                    Price = 2.00m,
+                    CompanyId = 1,
+                    DescriptionFull = "VIP Camp е мястото, където младите хора се събират за незабравимо преживяване. Импровизационен театър, музика, танци, спортни игри, лекции и вечерни събития като DJ партита и лагерен огън – всичко това в рамките на 7 дни в красивата природа на Utopia Forest.",
+                    DescriptionShort = "🔥 Театър | 🎶 Музика | 💃 Танци | 🏐 Спорт | 🎓 Лекции",
+                    GalleryImageUrls = new List<string>
+                    {
+                        "/images/events/premium-camp-2025/gallery1.jpg",
+                        "/images/events/premium-camp-2025/gallery2.jpg"
+                    },
+                    LocationMapEmbedUrl = "https://www.google.bg/maps/place/Rosslyn+Dimyat+Hotel+Varna/@43.2098649,27.9262516,17z/data=!3m2!4b1!5s0x40a4540f75a98a9b:0x8a6cba320022fcdc!4m9!3m8!1s0x40a4540f0aa073a5:0xbdf6c46bb9b60967!5m2!4m1!1i2!8m2!3d43.2098649!4d27.9288265!16s%2Fg%2F11cm_hsrn4?entry=ttu&g_ep=EgoyMDI1MDMzMS4wIKXMDSoASAFQAw%3D%3D",
+                    MainImageUrl = "/images/events/vip-camp-2025/main.jpg",
+                    Schedules = new List<Schedule>
+                    {
+                        new Schedule { Description = "Пристигане и настаняване", Time = new DateTime(2025, 11, 5, 16, 0, 0) },
+                        new Schedule { Description = "Откриващ концерт", Time = new DateTime(2025, 11, 5, 20, 30, 0) },
+                    },
+                    Speakers = new List<Speaker>
+                    {
+                        new Speaker { Name = "Иван Петров", Bio = "Лектор по личностно развитие и мотивация." },
+                        new Speaker { Name = "Мария Георгиева", Bio = "Професионален музикален педагог и коуч по сценично поведение." }
+                    }
                 },
-
-                Speakers = new List<Speaker>
+                new Event
                 {
-                    new Speaker { Name = "Иван Петров", Bio = "Лектор по личностно развитие и мотивация." },
-                    new Speaker { Name = "Мария Георгиева", Bio = "Професионален музикален педагог и коуч по сценично поведение." }
+                    Name = "Premium Camp 2025 - II",
+                    Location = "Utopia Forest Hotel, Bulgaria",
+                    StartDate = new DateTime(2025, 10, 1),
+                    EndDate = new DateTime(2025, 10, 8),
+                    Price = 0.00m,
+                    CompanyId = 1,
+                    DescriptionFull = "Premium Camp е мястото, където младите хора се събират за незабравимо преживяване. Импровизационен театър, музика, танци, спортни игри, лекции и вечерни събития като DJ партита и лагерен огън – всичко това в рамките на 7 дни в красивата природа на Utopia Forest.",
+                    DescriptionShort = "🔥 Театър | 🎶 Музика | 💃 Танци | 🏐 Спорт | 🎓 Лекции",
+                    GalleryImageUrls = new List<string>
+                    {
+                        "/images/events/premium-camp-2025/gallery1.jpg",
+                        "/images/events/premium-camp-2025/gallery2.jpg"
+                    },
+                    LocationMapEmbedUrl = "https://www.google.de/maps/place/Hotel+Utopia+Forest/@42.4443119,27.5531289,17z/data=!4m9!3m8!1s0x40a6c1cf8eb2d3d3:0x7f57c4568c3a8f30!5m2!4m1!1i2!8m2!3d42.4443119!4d27.5557038!16s%2Fg%2F11h8l5sv0g?entry=ttu&g_ep=EgoyMDI1MDMzMS4wIKXMDSoASAFQAw%3D%3D",
+                    MainImageUrl = "/images/events/premium-camp-2025/main.jpg",
+                    Schedules = new List<Schedule>
+                    {
+                        new Schedule { Description = "Пристигане и настаняване", Time = new DateTime(2025, 10, 1, 16, 0, 0) },
+                        new Schedule { Description = "Откриващ концерт", Time = new DateTime(2025, 10, 1, 20, 30, 0) },
+                    },
+                    Speakers = new List<Speaker>
+                    {
+                        new Speaker { Name = "Иван Петров", Bio = "Лектор по личностно развитие и мотивация." },
+                        new Speaker { Name = "Мария Георгиева", Bio = "Професионален музикален педагог и коуч по сценично поведение." }
+                    }
                 }
-            }
-        };
+            };
+
+
+
 
             _context.Events.AddRange(events);
             await _context.SaveChangesAsync();
