@@ -62,3 +62,37 @@ function hideLoadingMessage(img) {
         loadingMessage.style.display = 'none';
     }
 }
+
+/**
+ * Summary:
+ * This JavaScript code checks the current URL path against the href of each navigation link. 
+ * When it finds a match, it adds a current class to the parent <li> element. 
+ * If there’s no match, it ensures the current class is removed. 
+ * This ensures the active menu item is visually highlighted on page load.
+ */
+document.addEventListener('DOMContentLoaded', function () {
+    const currentUrlPath = window.location.pathname;
+    //console.log('Current URL Path:', currentUrlPath);
+
+    const navLinks = document.querySelectorAll('.main-menu__list a');
+    //console.log('Nav Links:', navLinks);
+
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        //console.log('Checking link:', href);
+
+        if (href === currentUrlPath) {
+            const listItem = link.closest('li');
+            //console.log('Match found. Adding "current" class to <li>:', listItem);
+            listItem.classList.add('current');
+        } else {
+            const listItem = link.closest('li');
+            if (listItem) {
+                //console.log('No match for:', href);
+                listItem.classList.remove('current');
+            }
+        }
+    });
+});
+
+
