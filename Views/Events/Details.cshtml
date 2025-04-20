@@ -11,6 +11,11 @@
     string columnClass = $"col-xl-{columnWidth}";
 }
 
+@{
+    var location = "Hotel Utopia Forest, Rosenets Park, 8000 Burgas"; // You can pass this from your controller
+    var mapUrl = $"https://www.google.com/maps?q={Uri.EscapeDataString(location)}&output=embed";
+}
+
 <section class="event-details">
     <div class="container">
         <div class="row">
@@ -48,18 +53,34 @@
                             </div>
                         }
 
-                        @if (orderedSchedules.Any())
+                        @{
+                            // Grouping the schedules by date (without time part)
+                            var groupedSchedules = orderedSchedules
+                            .GroupBy(s => s.Time.Date)
+                            .OrderBy(g => g.Key); // Optional: ensures dates are ordered
+                        }
+
+                        @if (groupedSchedules.Any())
                         {
                             <div class="event-details__points-box">
                                 <ul class="event-details__points list-unstyled">
-                                    @foreach (var schedule in orderedSchedules)
+                                    @foreach (var group in groupedSchedules)
                                     {
-                                        <li>
-                                            <div class="icon">
-                                                <span class="icon-double-angle"></span>
-                                            </div>
-                                            <p><strong>@schedule.Time.ToString("dd.MM.yyyy HH:mm"):</strong> @schedule.Description</p>
-                                        </li>
+
+                                            
+                                            <ul class="list-unstyled ps-3">
+                                                @group.Key.ToString("dd.MM.yyyy")
+                                                @foreach (var schedule in group.OrderBy(s => s.Time))
+                                                {
+                                                    <li>
+                                                        <div class="icon">
+                                                            <span class="icon-double-angle"></span>
+                                                        </div>
+                                                        <p><strong>@schedule.Time.ToString("HH:mm"):</strong> @schedule.Description</p>
+                                                    </li>
+                                                }
+                                            </ul><br />
+
                                     }
                                 </ul>
                             </div>
@@ -128,10 +149,15 @@
                     {
                         <div class="event-details__location">
                             <h3 class="event-details__location-title">Локация</h3>
-                            <iframe src="@Model.LocationMapEmbedUrl" class="google-map__one" allowfullscreen=""></iframe>
-                        </div>
+                                <iframe src="@mapUrl"></iframe>
+                            </div>
                     }
                 </div>
+                
+
+
+
+
             </div>
         </div>
     </div>

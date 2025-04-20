@@ -8,7 +8,7 @@
                 <div class="main-menu__left">
                     <div class="main-menu__logo">
                         <a asp-controller="Home" asp-action="Index">
-                            <h6 data-hover=" Celebrate Life" class="sliding-text__title" style="font-size: xx-large;">T-Camps
+                            <h6 data-hover="Celebrate Life" class="sliding-text__title" style="font-size: xx-large;">T-Camps
                                 <img src="/assets/images/icon/star-icon.png" alt="" style="max-width: 100px">
                             </h6>
                         </a>
@@ -23,21 +23,8 @@
                         <li>
                             <a asp-controller="Home" asp-action="About">За Нас</a>
                         </li>
-
-                        <li class="dropdown">
-                            <a asp-controller="Events" asp-action="Index">Събития</a>
-                            <ul>
-                                <li>
-                                    <a asp-controller="Home" asp-action="Events">Стари</a>
-                                </li>
-                                <li class="current">
-                                    <a asp-controller="Events" asp-action="Index">Нови</a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <li>
-                            <a asp-controller="Home" asp-action="Events">Събития</a>
+                            <a asp-controller="Events" asp-action="Index">Събития</a>
                         </li>
                         <li>
                             <a asp-controller="Home" asp-action="Gallery">Галерия</a>
@@ -48,7 +35,7 @@
                                 <li>
                                     <a asp-controller="Home" asp-action="JoinEvent">Участвай в събитие</a>
                                 </li>
-                                <li class="current">
+                                <li>
                                     <a asp-controller="Home" asp-action="BecomeMember">Стани Член на Т-Кампс</a>
                                 </li>
                                 <li>
