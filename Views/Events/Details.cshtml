@@ -16,6 +16,16 @@
     var mapUrl = $"https://www.google.com/maps?q={Uri.EscapeDataString(location)}&output=embed";
 }
 
+@{
+    var groupedSchedules = Model.Schedules
+        .OrderBy(s => s.Time)
+        .GroupBy(s => s.Time.Date)
+        .ToList();
+
+    var culture = new System.Globalization.CultureInfo("bg-BG");
+    var groupIndex = 0;
+}
+
 <section class="event-details">
     <div class="container">
         <div class="row">
@@ -53,40 +63,67 @@
                             </div>
                         }
 
-                        @{
-                            // Grouping the schedules by date (without time part)
-                            var groupedSchedules = orderedSchedules
-                            .GroupBy(s => s.Time.Date)
-                            .OrderBy(g => g.Key); // Optional: ensures dates are ordered
-                        }
-
-                        @if (groupedSchedules.Any())
-                        {
-                            <div class="event-details__points-box">
-                                <ul class="event-details__points list-unstyled">
-                                    @foreach (var group in groupedSchedules)
-                                    {
-
-                                            
-                                            <ul class="list-unstyled ps-3">
-                                                @group.Key.ToString("dd.MM.yyyy")
-                                                @foreach (var schedule in group.OrderBy(s => s.Time))
-                                                {
-                                                    <li>
-                                                        <div class="icon">
-                                                            <span class="icon-double-angle"></span>
-                                                        </div>
-                                                        <p><strong>@schedule.Time.ToString("HH:mm"):</strong> @schedule.Description</p>
-                                                    </li>
-                                                }
-                                            </ul><br />
-
-                                    }
-                                </ul>
-                            </div>
-                        }
+                        
                     </div>
                 </div>
+
+
+
+
+                @if (groupedSchedules.Any())
+                {
+                    <div class="table-responsive my-4">
+                        <table class="table table-bordered align-middle text-center">
+                            <thead style="background-color: #04000A; color: #ffffff;">
+                                <tr>
+                                    <th scope="col" style="width: 20%;">Дата</th>
+                                    <th scope="col" style="width: 15%;">Час</th>
+                                    <th scope="col">Мероприятие</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var group in groupedSchedules)
+                                {
+                                    var rowspan = group.Count();
+                                    var isFirstRow = true;
+                                    var bgColor = groupIndex % 2 == 0 ? "#0E0A17" : "#04000A"; // Light blue tones
+                                    var textColor = "#ffffff";
+
+                                    foreach (var item in group)
+                                    {
+                                        <tr style="background-color: @bgColor; color: @textColor;">
+                                            @if (isFirstRow)
+                                            {
+                                                <td rowspan="@rowspan" class="fw-bold" style="vertical-align: middle;">
+                                                    @group.Key.ToString("dd.MM.yyyy (dddd)", culture)
+                                                </td>
+                                            }
+                                            <td>@item.Time.ToString("HH:mm")</td>
+                                            <td class="text-start">@item.Description</td>
+                                        </tr>
+
+                                        isFirstRow = false;
+                                    }
+
+                                    groupIndex++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
 
             <div class="col-xl-4 col-lg-5">
@@ -153,12 +190,8 @@
                             </div>
                     }
                 </div>
-                
-
-
-
-
             </div>
         </div>
     </div>
 </section>
+

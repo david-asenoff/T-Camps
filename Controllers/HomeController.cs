@@ -25,14 +25,47 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
+        // Seed initial data if necessary
         await SeedDataAsync();
+
+        // Fetch the first company with its related Missions and Services
         var company = await _context.Companies
-    .Include(c => c.Missions)
-    .Include(c => c.Services)
-    .FirstOrDefaultAsync();
-        ViewData["Title"] = "Home Page";
-        return View(company);
+            .Include(c => c.Missions)
+            .Include(c => c.Services)
+            .Include(c => c.Members)
+            .FirstOrDefaultAsync();
+
+        // Return 404 if no company is found
+        if (company == null)
+        {
+            return NotFound();
+        }
+
+        // Map the company data to the CompanyViewModel
+        var model = new CompanyViewModel
+        {
+            Id = company.Id,
+            Name = company.Name,
+            Moto = company.Moto,
+            WelcomeMessage = company.WelcomeMessage,
+            About = company.About,
+            JoinInformation = company.JoinInformation,
+            PhoneNumber = company.PhoneNumber,
+            Email = company.Email,
+            Instagram = company.Instagram,
+            Facebook = company.Facebook,
+            X = company.X,
+            LinkedIn = company.LinkedIn,
+            YouTube = company.YouTube,
+            Missions = company.Missions,
+            Services = company.Services,
+            Members = company.Members,
+        };
+
+        return View(model);
     }
+
+
 
     public async Task<IActionResult> Privacy()
     {
@@ -66,7 +99,7 @@ public class HomeController : Controller
         var model = await _context.Members
             .Include(m => m.Company)
             .OrderBy(m => m.Id)
-            .Select(m => new AboutViewModel
+            .Select(m => new MembersViewModel
             {
                 Name = m.Name,
                 Email = m.Email,
