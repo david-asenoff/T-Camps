@@ -1,122 +1,84 @@
-﻿@{
-    ViewData["Title"] = "Contact";
+﻿@model T_Camps.Data.ContactFormSubmission
+
+@{
+    ViewData["Title"] = "Контактна форма";
 }
 
-<div class="page-wrapper">
-    <!--Contact One Start-->
-    <section class="contact-one">
-        <div class="container">
-            <div class="contact-one__inner">
-                <h3 class="contact-one__title">write here below? </h3>
-                <p class="contact-one__text">
-                    For your car we will do everything advice, repairs and they can<br>
-                    maintenance. We are the some preferred choice
-                </p>
-                <form class="contact-form-validated contact-one__form" action="/assets/inc/sendemail.php"
-                      method="post" novalidate="novalidate">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="contact-one__input-box">
-                                <input type="text" name="name" placeholder="Имена" required="">
-                            </div>
+<section class="contact-one py-5">
+    <div class="container">
+        <div class="contact-one__inner">
+            <h3 class="contact-one__title">Свържи се с нас</h3>
+            <p class="contact-one__text">
+                Сподели своя въпрос или желание да се включиш в нашата кауза!
+            </p>
+
+            <!-- Success Message -->
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-success mt-3 mb-4" style="font-size: 1.1rem;">
+                    @TempData["Message"]
+                </div>
+            }
+
+            <!-- Begin Form -->
+            <form asp-action="Contact" method="post" class="contact-one__form">
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="contact-one__input-box">
+                            <input asp-for="Name" class="form-control" placeholder="Имена" />
+                            <span asp-validation-for="Name" class="text-danger small d-block mt-1"></span>
                         </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="contact-one__input-box">
-                                <input type="email" name="email" placeholder="Ел. поща" required="">
-                            </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="contact-one__input-box">
+                            <input asp-for="Email" class="form-control" placeholder="Ел. поща" />
+                            <span asp-validation-for="Email" class="text-danger small d-block mt-1"></span>
                         </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="contact-one__input-box">
-                                <input type="text" name="Phone" placeholder="Телефонен номер" required="">
-                            </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="contact-one__input-box">
+                            <input asp-for="Phone" class="form-control" placeholder="Телефонен номер" />
+                            <span asp-validation-for="Phone" class="text-danger small d-block mt-1"></span>
                         </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="contact-one__input-box">
-                                <div class="select-box">
-                                    <select class="selectmenu wide">
-                                        <option>Участие в събитие</option>
-                                        <option>Стани член на Т-Кампс</option>
-                                        <option>Подкрепи като Спонсор</option>
-                                        <option>Друго</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-12">
-                            <div class="contact-one__input-box text-message-box">
-                                <textarea name="message" placeholder="Вашето съобщение..." required></textarea>
-                            </div>
-                            <div class="contact-one__btn-box">
-                                <button type="submit" class="thm-btn contact-one__btn">
-                                    Submit Now<span class="icon-arrow-right"></span>
-                                </button>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="contact-one__input-box">
+                            <div class="select-box">
+                                <select asp-for="Topic" class="form-select">
+                                    <option value="">-- Изберете тема --</option>
+                                    <option>Участие в събитие</option>
+                                    <option>Стани член на Т-Кампс</option>
+                                    <option>Подкрепи като Спонсор</option>
+                                    <option>Друго</option>
+                                </select>
+                                <span asp-validation-for="Topic" class="text-danger small d-block mt-1"></span>
                             </div>
                         </div>
                     </div>
-                </form>
-                <div class="result"></div>
-            </div>
+
+                    <div class="col-xl-12">
+                        <div class="contact-one__input-box text-message-box">
+                            <textarea asp-for="Message" class="form-control" placeholder="Вашето съобщение..."></textarea>
+                            <span asp-validation-for="Message" class="text-danger small d-block mt-1"></span>
+                        </div>
+                        <div class="contact-one__btn-box">
+                            <button type="submit" class="thm-btn contact-one__btn">
+                                Изпрати сега <span class="icon-arrow-right"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-    </section>
-    <!--Contact One End-->
-
-
-</div><!-- /.page-wrapper -->
-
-<div class="mobile-nav__wrapper">
-    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-    <!-- /.mobile-nav__overlay -->
-    <div class="mobile-nav__content">
-        <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
-
-        <div class="logo-box">
-            <a href="index.html" aria-label="logo image">
-                <img src="/assets/images/resources/logo-1.png" width="150"
-                     alt="" style="max-width: -webkit-fill-available;" />
-            </a>
-        </div>
-        <!-- /.logo-box -->
-        <div class="mobile-nav__container"></div>
-        <!-- /.mobile-nav__container -->
-
-        <ul class="mobile-nav__contact list-unstyled">
-            <li>
-                <i class="fa fa-envelope"></i>
-                <a href="mailto:needhelp@packageName__.com">needhelp@eventflow.com</a>
-            </li>
-            <li>
-                <i class="fa fa-phone-alt"></i>
-                <a href="tel:666-888-0000">666 888 0000</a>
-            </li>
-        </ul><!-- /.mobile-nav__contact -->
-        <div class="mobile-nav__top">
-            <div class="mobile-nav__social">
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-facebook-square"></a>
-                <a href="#" class="fab fa-pinterest-p"></a>
-                <a href="#" class="fab fa-instagram"></a>
-            </div><!-- /.mobile-nav__social -->
-        </div><!-- /.mobile-nav__top -->
-
-
-
     </div>
-    <!-- /.mobile-nav__content -->
-</div>
-<!-- /.mobile-nav__wrapper -->
+</section>
 
-<div class="search-popup">
-    <div class="search-popup__overlay search-toggler"></div>
-    <!-- /.search-popup__overlay -->
-    <div class="search-popup__content">
-        <form action="#">
-            <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-            <input type="text" id="search" placeholder="Search Here..." />
-            <button type="submit" aria-label="search submit" class="thm-btn">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
-    </div>
-    <!-- /.search-popup__content -->
-</div>
-<!-- /.search-popup -->
+<!-- Required for validation -->
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

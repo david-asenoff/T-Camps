@@ -94,6 +94,27 @@ public class HomeController : Controller
         return View();
     }
 
+    // POST: /Home/Contact
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Contact(ContactFormSubmission model)
+    {
+        if (ModelState.IsValid)
+        {
+            model.SubmittedAt = DateTime.UtcNow;
+
+            _context.ContactFormSubmissions.Add(model);
+            await _context.SaveChangesAsync();
+
+            TempData["Message"] = "Благодарим ви! Вашето съобщение беше изпратено успешно.";
+            return RedirectToAction("Contact"); // This is key for TempData to persist
+        }
+
+        // If there are validation errors, just return the same view with the model
+        return View(model);
+    }
+
+
     public async Task<IActionResult> About()
     {
         var model = await _context.Members
