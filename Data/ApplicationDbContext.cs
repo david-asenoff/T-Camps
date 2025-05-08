@@ -21,5 +21,6 @@ namespace T_Camps.Data
         public DbSet<Event> Events { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Speaker> Speakers { get; set; }
+        public DbSet<ContactFormSubmission> ContactFormSubmissions { get; set; }
     }
 }

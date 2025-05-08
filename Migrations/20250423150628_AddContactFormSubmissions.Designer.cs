@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using T_Camps.Data;
 
@@ -11,9 +12,11 @@ using T_Camps.Data;
 namespace T_Camps.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250423150628_AddContactFormSubmissions")]
+    partial class AddContactFormSubmissions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,10 +92,22 @@ namespace T_Camps.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Facebook")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Instagram")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("JoinInformation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkedIn")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -112,6 +127,14 @@ namespace T_Camps.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("WelcomeMessage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("X")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("YouTube")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -405,43 +428,6 @@ namespace T_Camps.Migrations
                     b.ToTable("Services");
                 });
 
-            modelBuilder.Entity("T_Camps.Data.SocialMediaLink", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Platform")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("SocialMediaLink");
-                });
-
             modelBuilder.Entity("T_Camps.Data.Speaker", b =>
                 {
                     b.Property<int>("Id")
@@ -574,17 +560,6 @@ namespace T_Camps.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("T_Camps.Data.SocialMediaLink", b =>
-                {
-                    b.HasOne("T_Camps.Data.Company", "Company")
-                        .WithMany("SocialMediaLinks")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-                });
-
             modelBuilder.Entity("T_Camps.Data.Speaker", b =>
                 {
                     b.HasOne("T_Camps.Data.Event", "Event")
@@ -616,8 +591,6 @@ namespace T_Camps.Migrations
                     b.Navigation("Missions");
 
                     b.Navigation("Services");
-
-                    b.Navigation("SocialMediaLinks");
 
                     b.Navigation("TermsAndConditions");
                 });

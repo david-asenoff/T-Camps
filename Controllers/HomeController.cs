@@ -25,14 +25,43 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
+        // Seed initial data if necessary
         await SeedDataAsync();
+
+        // Fetch the first company with its related Missions and Services
         var company = await _context.Companies
-    .Include(c => c.Missions)
-    .Include(c => c.Services)
-    .FirstOrDefaultAsync();
-        ViewData["Title"] = "Home Page";
-        return View(company);
+            .Include(c => c.Missions)
+            .Include(c => c.Services)
+            .Include(c => c.Members)
+            .FirstOrDefaultAsync();
+
+        // Return 404 if no company is found
+        if (company == null)
+        {
+            return NotFound();
+        }
+
+        // Map the company data to the CompanyViewModel
+        var model = new CompanyViewModel
+        {
+            Id = company.Id,
+            Name = company.Name,
+            Moto = company.Moto,
+            WelcomeMessage = company.WelcomeMessage,
+            About = company.About,
+            JoinInformation = company.JoinInformation,
+            PhoneNumber = company.PhoneNumber,
+            Email = company.Email,
+            SocialMediaLinks = company.SocialMediaLinks,
+            Missions = company.Missions,
+            Services = company.Services,
+            Members = company.Members,
+        };
+
+        return View(model);
     }
+
+
 
     public async Task<IActionResult> Privacy()
     {
@@ -61,12 +90,33 @@ public class HomeController : Controller
         return View();
     }
 
+    // POST: /Home/Contact
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Contact(ContactFormSubmission model)
+    {
+        if (ModelState.IsValid)
+        {
+            model.SubmittedAt = DateTime.UtcNow;
+
+            _context.ContactFormSubmissions.Add(model);
+            await _context.SaveChangesAsync();
+
+            TempData["Message"] = "Благодарим ви! Вашето съобщение беше изпратено успешно.";
+            return RedirectToAction("Contact"); // This is key for TempData to persist
+        }
+
+        // If there are validation errors, just return the same view with the model
+        return View(model);
+    }
+
+
     public async Task<IActionResult> About()
     {
         var model = await _context.Members
             .Include(m => m.Company)
             .OrderBy(m => m.Id)
-            .Select(m => new AboutViewModel
+            .Select(m => new MembersViewModel
             {
                 Name = m.Name,
                 Email = m.Email,

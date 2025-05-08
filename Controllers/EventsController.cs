@@ -16,7 +16,6 @@ namespace T_Camps.Controllers
         public async Task<IActionResult> Index()
         {
             var upcomingEvents = await _context.Events
-                .Where(e => e.StartDate > DateTime.Now)
                 .ToListAsync();
 
             return View(upcomingEvents);

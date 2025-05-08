@@ -17,6 +17,7 @@ namespace T_Camps.Services
             return await _context.Companies
                 .Include(c => c.Missions)
                 .Include(c => c.Services)
+                .Include(c => c.SocialMediaLinks)
                 .FirstOrDefaultAsync();
         }
     }

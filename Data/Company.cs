@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace T_Camps.Data
 {
-    public class Company : BaseDeletableModel<int>
+    public partial class Company : BaseDeletableModel<int>
     {
         public string Name { get; set; }
 
@@ -23,11 +23,7 @@ namespace T_Camps.Data
         [Required]
         [EmailAddress]
         public string Email { get; set; }
-        public string Instagram { get; set; }
-        public string Facebook { get; set; }
-        public string X { get; set; }
-        public string LinkedIn { get; set; }
-        public string YouTube { get; set; }
+        public List<SocialMediaLink> SocialMediaLinks { get; set; }
         public List<Event> Events { get; set; }
     }
 }
