@@ -18,12 +18,43 @@
                     </a>
                 </div>
                 <div class="site-footer__social">
-                    <a href="@Model.Facebook" target="_blank"><i class="icon-facebook"></i></a>
-                    <a href="@Model.X" target="_blank"><i class="icon-fi"></i></a>
-                    <a href="@Model.Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                    <a href="@Model.LinkedIn" target="_blank"><i class="icon-linkedin-in"></i></a>
-                    <a href="@Model.YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                    @if (Model.SocialMediaLinks != null)
+                    {
+                        @foreach (var link in Model.SocialMediaLinks)
+                        {
+                            if (!string.IsNullOrEmpty(link.Url))
+                            {
+                                <a href="@link.Url" target="_blank">
+                                    @switch (link.Platform)
+                                    {
+                                        case "Facebook":
+                                            <i class="icon-facebook"></i>
+                                            break;
+                                        case "X":
+                                            <i class="icon-fi"></i>
+                                            break;
+                                        case "Instagram":
+                                            <i class="icon-instagram"></i>
+                                            break;
+                                        case "LinkedIn":
+                                            <i class="icon-linkedin-in"></i>
+                                            break;
+                                        case "YouTube":
+                                            <i class="fab fa-youtube"></i>
+                                            break;
+                                        case "TikTok":
+                                            <i class="icon-tiktok"></i>
+                                            break;
+                                        case "Threads":
+                                            <i class="icon-threads"></i>
+                                            break;
+                                    }
+                                </a>
+                            }
+                        }
+                    }
                 </div>
+
             </div>
         </div>
     </div>

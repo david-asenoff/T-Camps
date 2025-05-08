@@ -27,12 +27,22 @@ namespace T_Camps.ViewComponents
             {
                 PhoneNumber = company.PhoneNumber,
                 Email = company.Email,
-                Instagram = company.Instagram,
-                Facebook = company.Facebook,
-                X = company.X,
-                LinkedIn = company.LinkedIn,
-                YouTube = company.YouTube
+                Facebook = company.SocialMediaLinks
+        .FirstOrDefault(s => s.Platform == "Facebook")?.Url,
+                Instagram = company.SocialMediaLinks
+        .FirstOrDefault(s => s.Platform == "Instagram")?.Url,
+                X = company.SocialMediaLinks
+        .FirstOrDefault(s => s.Platform == "X")?.Url,
+                LinkedIn = company.SocialMediaLinks
+        .FirstOrDefault(s => s.Platform == "LinkedIn")?.Url,
+                YouTube = company.SocialMediaLinks
+        .FirstOrDefault(s => s.Platform == "YouTube")?.Url,
+                TikTok = company.SocialMediaLinks
+        .FirstOrDefault(s => s.Platform == "TikTok")?.Url,
+                Threads = company.SocialMediaLinks
+        .FirstOrDefault(s => s.Platform == "Threads")?.Url,
             };
+
 
             return View(contactViewModel);
         }

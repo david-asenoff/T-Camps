@@ -64,7 +64,8 @@
 <!-- Add the new content here -->
 <div class="containerHomePage">
     <h2 class="homePageH2" id="homePageH2Id"><span class="motto">@Model.Moto</span></h2>
-    <p class="welcome">@Model.WelcomeMessage</p>
+    <p class="motto" style=" text-transform: uppercase; ">@Model.WelcomeMessage</p>
+    </br>
     <p>@Model.About</p>
 
     <!--Team Page Start-->
@@ -88,9 +89,9 @@
                                             <a href="team-details.html">@Model.Members[i].Name</a>
                                         </h4>
                                         <p class="team-one__sub-title-hover">@Model.Members[i].Role</p>
-                                        <p class="team-one__text-hover">
+@*                                         <p class="team-one__text-hover">
                                             @Model.Members[i].About
-                                        </p>
+                                        </p> *@
                                     </div>
                                 </div>
                             </div>

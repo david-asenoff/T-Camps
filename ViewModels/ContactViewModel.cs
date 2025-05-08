@@ -9,5 +9,7 @@
         public string X { get; set; }
         public string LinkedIn { get; set; }
         public string YouTube { get; set; }
+        public string? TikTok { get; internal set; }
+        public string? Threads { get; internal set; }
     }
 }
