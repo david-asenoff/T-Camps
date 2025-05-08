@@ -173,7 +173,17 @@ public class HomeController : Controller
 
     public async Task<IActionResult> BecomeSponsor()
     {
-        return View();
+        var company = await _context.Companies
+            .Include(c => c.Missions)
+            .Include(c => c.Services)
+            .FirstOrDefaultAsync();
+
+        if (company == null)
+        {
+            return NotFound();
+        }
+
+        return View(company);
     }
 
     public async Task<IActionResult> BecomeMember()

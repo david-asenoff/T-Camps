@@ -17,7 +17,7 @@
 
             <div class="schedule-one__inner">
                 <div class="schedule-one__main-tab-box tabs-box">
-                    <div class="tab-buttons-wrapper">
+@*                     <div class="tab-buttons-wrapper">
                         <ul class="tab-buttons clearfix list-unstyled">
                             @foreach (var eventGroup in Model.GroupBy(e => e.StartDate.Date))
                             {
@@ -27,7 +27,7 @@
                             }
                         </ul>
                     </div>
-                    <div class="tabs-content">
+                    <div class="tabs-content"> *@
                         @foreach (var eventGroup in Model.GroupBy(e => e.StartDate.Date))
                         {
                             <div class="tab @(eventGroup.Key == Model.First().StartDate.Date ? "active-tab" : "")" id="@eventGroup.Key.ToString("yyyyMMdd")">
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                         }
-                    </div>
+@*                     </div> *@
                 </div>
             </div>
         </div>
