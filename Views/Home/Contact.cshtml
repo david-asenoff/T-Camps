@@ -25,28 +25,30 @@
                 @Html.AntiForgeryToken()
 
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6">
+                    <div class="col-xl-8 col-lg-8">
                         <div class="contact-one__input-box">
                             <input asp-for="Name" class="form-control" placeholder="Имена" />
                             <span asp-validation-for="Name" class="text-danger small d-block mt-1"></span>
                         </div>
                     </div>
 
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="contact-one__input-box">
-                            <input asp-for="Email" class="form-control" placeholder="Ел. поща" />
-                            <span asp-validation-for="Email" class="text-danger small d-block mt-1"></span>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6 col-lg-6">
+                    <div class="col-xl-4 col-lg-4">
                         <div class="contact-one__input-box">
                             <input asp-for="Phone" class="form-control" placeholder="Телефонен номер" />
                             <span asp-validation-for="Phone" class="text-danger small d-block mt-1"></span>
                         </div>
                     </div>
 
-                    <div class="col-xl-6 col-lg-6">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="contact-one__input-box">
+                            <input asp-for="Email" class="form-control" placeholder="Ел. поща" />
+                            <span asp-validation-for="Email" class="text-danger small d-block mt-1"></span>
+                        </div>
+                    </div>
+
+
+
+@*                     <div class="col-xl-6 col-lg-6">
                         <div class="contact-one__input-box">
                             <div class="select-box">
                                 <select asp-for="Topic" class="form-select">
@@ -59,7 +61,7 @@
                                 <span asp-validation-for="Topic" class="text-danger small d-block mt-1"></span>
                             </div>
                         </div>
-                    </div>
+                    </div> *@
 
                     <div class="col-xl-12">
                         <div class="contact-one__input-box text-message-box">

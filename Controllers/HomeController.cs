@@ -26,7 +26,7 @@ public class HomeController : Controller
     public async Task<IActionResult> Index()
     {
         // Seed initial data if necessary
-        await SeedDataAsync();
+        //await SeedDataAsync();
 
         // Fetch the first company with its related Missions and Services
         var company = await _context.Companies
@@ -148,17 +148,37 @@ public class HomeController : Controller
 
     public async Task<IActionResult> InfoNpo()
     {
+        // Fetch the first company with its related Missions and Services
         var company = await _context.Companies
             .Include(c => c.Missions)
             .Include(c => c.Services)
+            .Include(c => c.Members)
             .FirstOrDefaultAsync();
 
+        // Return 404 if no company is found
         if (company == null)
         {
             return NotFound();
         }
 
-        return View(company);
+        // Map the company data to the CompanyViewModel
+        var model = new CompanyViewModel
+        {
+            Id = company.Id,
+            Name = company.Name,
+            Moto = company.Moto,
+            WelcomeMessage = company.WelcomeMessage,
+            About = company.About,
+            JoinInformation = company.JoinInformation,
+            PhoneNumber = company.PhoneNumber,
+            Email = company.Email,
+            SocialMediaLinks = company.SocialMediaLinks,
+            Missions = company.Missions,
+            Services = company.Services,
+            Members = company.Members,
+        };
+
+        return View(model);
     }
 
     public async Task<IActionResult> Terms()
@@ -237,15 +257,15 @@ public class HomeController : Controller
         //return Redirect(Request.GetTypedHeaders().Referer.ToString());
     }
 
-    public async Task<IActionResult> SeedDataAsync()
-    {
-        await _dataSeeder.SeedCompaniesAsync();
-        await _dataSeeder.SeedMissionsAsync();
-        await _dataSeeder.SeedServicesAsync();
-        await _dataSeeder.SeedMembersAsync();
-        await _dataSeeder.SeedTermsAndConditionsAsync();
-        await _dataSeeder.SeedEventsAsync();
-        await _dataSeeder.SeedClientsAsync();
-        return RedirectToAction(nameof(Index));
-    }
+    //public async Task<IActionResult> SeedDataAsync()
+    //{
+    //    await _dataSeeder.SeedCompaniesAsync();
+    //    await _dataSeeder.SeedMissionsAsync();
+    //    await _dataSeeder.SeedServicesAsync();
+    //    await _dataSeeder.SeedMembersAsync();
+    //    await _dataSeeder.SeedTermsAndConditionsAsync();
+    //    await _dataSeeder.SeedEventsAsync();
+    //    await _dataSeeder.SeedClientsAsync();
+    //    return RedirectToAction(nameof(Index));
+    //}
 }

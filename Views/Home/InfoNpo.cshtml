@@ -1,9 +1,69 @@
-﻿@using T_Camps.Data
-@model Company
+﻿@model T_Camps.ViewModels.CompanyViewModel
 
 @{
 	ViewData["Title"] = "Информация за НПО";
 }
+
+<!-- Add the new content here -->
+<div class="containerHomePage">
+    <h2 class="homePageH2" id="homePageH2Id"><span class="motto">@Model.Moto</span></h2>
+    <p class="motto" style=" text-transform: uppercase; ">@Model.WelcomeMessage</p>
+    </br>
+    <p>@Model.About</p>
+
+    <!--Team Page Start-->
+    <section class="team-page">
+        <div class="container">
+            <div class="row">
+                @for (int i = 0; i < Model.Members.Count(); i++)
+                {
+                    <!-- Team One Single Start -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="100ms">
+                        <div class="team-one__single">
+                            <div class="team-one__img-box">
+                                <div class="team-one__img">
+                                    <img src="@Model.Members[i].Picture" alt="">
+                                    <div class="team-one__content">
+                                        <h4 class="team-one__name"><a href="team-details.html">@Model.Members[i].Name</a></h4>
+                                        <p class="team-one__sub-title">@Model.Members[i].Role</p>
+                                    </div>
+                                    <div class="team-one__content-hover">
+                                        <h4 class="team-one__name-hover">
+                                            <a href="team-details.html">@Model.Members[i].Name</a>
+                                        </h4>
+                                        <p class="team-one__sub-title-hover">@Model.Members[i].Role</p>
+@*                                         <p class="team-one__text-hover">
+                                            @Model.Members[i].About
+                                        </p> *@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Team One Single End -->
+                }
+
+            </div>
+        </div>
+    </section>
+    <!--Team Page End-->
+
+    <h2 class="homePageH2">Нашата мисия</h2>
+    <ul class="homePageUl">
+        @foreach (var mission in Model.Missions)
+        {
+            <li>@mission.Description</li>
+        }
+    </ul>
+
+    <h2 class="homePageH2">Какво предлагаме?</h2>
+    <ul class="homePageUl">
+        @foreach (var service in Model.Services)
+        {
+            <li>@service.Description</li>
+        }
+    </ul>
+</div>
 
 <section class="sponsor-invitation-section join-event-section join-event-section-custom mainContent">
 	<div class="container">

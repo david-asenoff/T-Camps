@@ -67,7 +67,7 @@
                     </div>
                 </div>
 
-
+                <button onclick="resetFilter()">Reset Filter</button>
 
 
                 @if (groupedSchedules.Any())
@@ -76,7 +76,7 @@
                         <table class="table table-bordered align-middle text-center">
                             <thead style="background-color: #04000A; color: #ffffff;">
                                 <tr>
-                                    <th scope="col" style="width: 20%;">Дата</th>
+                                    <th scope="col" style="width: 20%;" onclick="filterByDate(this)">Дата</th>
                                     <th scope="col" style="width: 15%;">Час</th>
                                     <th scope="col">Мероприятие</th>
                                 </tr>
@@ -89,9 +89,11 @@
                                     var bgColor = groupIndex % 2 == 0 ? "#0E0A17" : "#04000A"; // Light blue tones
                                     var textColor = "#ffffff";
 
+                                    var groupDate = group.Key.ToString("yyyy-MM-dd");
+
                                     foreach (var item in group)
                                     {
-                                        <tr style="background-color: @bgColor; color: @textColor;">
+                                        <tr data-date="@groupDate" style="background-color: @bgColor; color: @textColor;">
                                             @if (isFirstRow)
                                             {
                                                 <td rowspan="@rowspan" class="fw-bold" style="vertical-align: middle;">
@@ -195,3 +197,26 @@
     </div>
 </section>
 
+<script>
+    function filterByDate(header) {
+        const table = document.getElementById('scheduleTable');
+        const rows = table.querySelectorAll('tbody tr');
+        const dateToFilter = header.innerText.trim();
+
+        rows.forEach(row => {
+            const rowDate = row.getAttribute('data-date');
+            if (rowDate === dateToFilter) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    function resetFilter() {
+        const rows = document.querySelectorAll('#scheduleTable tbody tr');
+        rows.forEach(row => {
+            row.style.display = '';
+        });
+    }
+</script>
