@@ -1,4 +1,7 @@
-﻿@{
+﻿@using T_Camps.Data
+@model Company
+
+@{
 	ViewData["Title"] = "Стани Спонсор";
 }
 
@@ -62,9 +65,8 @@
 			<strong>Тони Огнянов</strong><br />
 			Председател на Управителния съвет<br />
 			Сдружение: „T-CAMPS“<br />
-			Телефон за контакт: <a href="tel:0895312434">089 5312 434</a><br />
-			Имейл: <a href="mailto:tonkisa1379@gmail.com">tonkisa1379@gmail.com</a> /
-			<a href="mailto:tonito1379@abv.bg">tonito1379@abv.bg</a>
+			Телефон за контакт: <a href="tel:@Model.PhoneNumber">@Model.PhoneNumber</a><br />
+			Имейл: <a href="mailto:@Model.Email">@Model.Email</a>
 		</p>
 	</div>
 </section>

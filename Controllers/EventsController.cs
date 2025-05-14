@@ -7,14 +7,19 @@ namespace T_Camps.Controllers
     public class EventsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly DataSeeder _dataSeeder;
 
-        public EventsController(ApplicationDbContext context)
+        public EventsController(ApplicationDbContext context, DataSeeder dataSeeder)
         {
             _context = context;
+            _dataSeeder = dataSeeder;
         }
 
         public async Task<IActionResult> Index()
         {
+            //Seed initial data if necessary
+            await SeedDataAsync();
+
             var upcomingEvents = await _context.Events
                 .ToListAsync();
 
@@ -35,6 +40,18 @@ namespace T_Camps.Controllers
             }
 
             return View(eventDetail);
+        }
+
+        public async Task<IActionResult> SeedDataAsync()
+        {
+            await _dataSeeder.SeedCompaniesAsync();
+            await _dataSeeder.SeedMissionsAsync();
+            await _dataSeeder.SeedServicesAsync();
+            await _dataSeeder.SeedMembersAsync();
+            await _dataSeeder.SeedTermsAndConditionsAsync();
+            await _dataSeeder.SeedEventsAsync();
+            await _dataSeeder.SeedClientsAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

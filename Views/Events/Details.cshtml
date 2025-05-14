@@ -23,8 +23,9 @@
         .ToList();
 
     var culture = new System.Globalization.CultureInfo("bg-BG");
-    var groupIndex = 0;
 }
+
+<script src="~/js/site.js"></script>
 
 <section class="event-details">
     <div class="container">
@@ -61,74 +62,53 @@
                                     }
                                 </div>
                             </div>
-                        }
-
-                        
+                        } 
                     </div>
                 </div>
-
-
-
 
                 @if (groupedSchedules.Any())
                 {
                     <div class="table-responsive my-4">
-                        <table class="table table-bordered align-middle text-center">
-                            <thead style="background-color: #04000A; color: #ffffff;">
+                        <table class="table table-striped table-hover table-bordered text-center align-middle" id="scheduleTable">
+                            <thead class="table-dark">
                                 <tr>
-                                    <th scope="col" style="width: 20%;">Дата</th>
-                                    <th scope="col" style="width: 15%;">Час</th>
-                                    <th scope="col">Мероприятие</th>
+                                    <th scope="col" style="width: 20%; border: white 1px solid;">Дата</th>
+                                    <th scope="col" style="width: 15%; border: white 1px solid;">Час</th>
+                                    <th scope="col" style="border: white 1px solid;">Мероприятие</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var group in groupedSchedules)
                                 {
-                                    var rowspan = group.Count();
-                                    var isFirstRow = true;
-                                    var bgColor = groupIndex % 2 == 0 ? "#0E0A17" : "#04000A"; // Light blue tones
-                                    var textColor = "#ffffff";
-
-                                    foreach (var item in group)
+                                    var groupDate = group.Key.ToString("dd.MM.yyyy");
+                                    var groupRows = group.ToList();
+                                    for (int i = 0; i < groupRows.Count; i++)
                                     {
-                                        <tr style="background-color: @bgColor; color: @textColor;">
-                                            @if (isFirstRow)
+                                        <tr data-date="@groupDate">
+                                            @if (i == 0)
                                             {
-                                                <td rowspan="@rowspan" class="fw-bold" style="vertical-align: middle;">
+                                                <td ondblclick="handleDoubleClick(this)"
+                                                    class="fw-bold text-primary"
+                                                    title="Кликни 2 пъти за да филтрираш"
+                                                    style="cursor: pointer;"
+                                                    rowspan="@groupRows.Count">
                                                     @group.Key.ToString("dd.MM.yyyy (dddd)", culture)
                                                 </td>
                                             }
-                                            <td>@item.Time.ToString("HH:mm")</td>
-                                            <td class="text-start">@item.Description</td>
+                                            <td style="color: white">@groupRows[i].Time.ToString("HH:mm")</td>
+                                            <td style="color: white" class="text-start">@groupRows[i].Description</td>
                                         </tr>
-
-                                        isFirstRow = false;
                                     }
-
-                                    groupIndex++;
                                 }
                             </tbody>
                         </table>
                     </div>
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
 
             <div class="col-xl-4 col-lg-5">
                 <div class="event-details__right">
-                    <div class="col-xl-12 col-lg-12">
+@*                     <div class="col-xl-12 col-lg-12">
                         <div class="event-details__right">
                             @if (Model?.Speakers?.Any() == true)
                             {
@@ -142,10 +122,10 @@
                                 </div>
                             }
                         </div>
-                    </div>
+                    </div> *@
 
                     <div class="event-details__ticket">
-                        <h3 class="event-details__ticket-title">Нямаш билет?</h3>
+                        <h3 class="event-details__ticket-title">Свържи се с нас</h3>
                         <p class="event-details__ticket-sub-title">Обади се сега</p>
                         <div class="event-details__ticket-icon">
                             <span class="icon-call"></span>
@@ -194,4 +174,3 @@
         </div>
     </div>
 </section>
-

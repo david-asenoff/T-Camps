@@ -15,8 +15,8 @@ namespace T_Camps.Data
         [Required(ErrorMessage = "Моля, въведете телефонен номер.")]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Моля, изберете тема на запитването.")]
-        public string Topic { get; set; }
+        //[Required(ErrorMessage = "Моля, изберете тема на запитването.")]
+        //public string Topic { get; set; }
 
         [Required(ErrorMessage = "Моля, въведете съобщение.")]
         public string Message { get; set; }
