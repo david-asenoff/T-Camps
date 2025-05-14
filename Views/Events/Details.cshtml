@@ -23,8 +23,9 @@
         .ToList();
 
     var culture = new System.Globalization.CultureInfo("bg-BG");
-    var groupIndex = 0;
 }
+
+<script src="~/js/site.js"></script>
 
 <section class="event-details">
     <div class="container">
@@ -61,71 +62,40 @@
                                     }
                                 </div>
                             </div>
-                        }
-
-                        
+                        } 
                     </div>
                 </div>
-
-                <button onclick="resetFilter()">Reset Filter</button>
-
 
                 @if (groupedSchedules.Any())
                 {
                     <div class="table-responsive my-4">
-                        <table class="table table-bordered align-middle text-center">
-                            <thead style="background-color: #04000A; color: #ffffff;">
+                        <table class="table table-striped table-hover table-bordered text-center align-middle" id="scheduleTable">
+                            <thead class="table-dark">
                                 <tr>
-                                    <th scope="col" style="width: 20%;" onclick="filterByDate(this)">Дата</th>
-                                    <th scope="col" style="width: 15%;">Час</th>
-                                    <th scope="col">Мероприятие</th>
+                                    <th scope="col" style="width: 20%; border: white 1px solid;">Дата</th>
+                                    <th scope="col" style="width: 15%; border: white 1px solid;">Час</th>
+                                    <th scope="col" style="border: white 1px solid;">Мероприятие</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var group in groupedSchedules)
                                 {
-                                    var rowspan = group.Count();
-                                    var isFirstRow = true;
-                                    var bgColor = groupIndex % 2 == 0 ? "#0E0A17" : "#04000A"; // Light blue tones
-                                    var textColor = "#ffffff";
-
-                                    var groupDate = group.Key.ToString("yyyy-MM-dd");
-
+                                    var groupDate = group.Key.ToString("dd.MM.yyyy");
                                     foreach (var item in group)
                                     {
-                                        <tr data-date="@groupDate" style="background-color: @bgColor; color: @textColor;">
-                                            @if (isFirstRow)
-                                            {
-                                                <td rowspan="@rowspan" class="fw-bold" style="vertical-align: middle;">
-                                                    @group.Key.ToString("dd.MM.yyyy (dddd)", culture)
-                                                </td>
-                                            }
-                                            <td>@item.Time.ToString("HH:mm")</td>
-                                            <td class="text-start">@item.Description</td>
+                                        <tr data-date="@groupDate" title="Кликни 2 пъти на датата, за да филтрираш">
+                                            <td ondblclick="handleDoubleClick(this)" class="fw-bold text-primary" style="cursor: pointer;">
+                                                @group.Key.ToString("dd.MM.yyyy (dddd)", culture)
+                                            </td>
+                                            <td style="color: white">@item.Time.ToString("HH:mm")</td>
+                                            <td style="color: white" class="text-start">@item.Description</td>
                                         </tr>
-
-                                        isFirstRow = false;
                                     }
-
-                                    groupIndex++;
                                 }
                             </tbody>
                         </table>
                     </div>
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
 
             <div class="col-xl-4 col-lg-5">
@@ -196,27 +166,3 @@
         </div>
     </div>
 </section>
-
-<script>
-    function filterByDate(header) {
-        const table = document.getElementById('scheduleTable');
-        const rows = table.querySelectorAll('tbody tr');
-        const dateToFilter = header.innerText.trim();
-
-        rows.forEach(row => {
-            const rowDate = row.getAttribute('data-date');
-            if (rowDate === dateToFilter) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    }
-
-    function resetFilter() {
-        const rows = document.querySelectorAll('#scheduleTable tbody tr');
-        rows.forEach(row => {
-            row.style.display = '';
-        });
-    }
-</script>

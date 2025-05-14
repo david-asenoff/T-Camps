@@ -96,3 +96,44 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+let isFiltered = false; // Flag to track the state of the double-click
+
+function handleDoubleClick(header) {
+
+    const rows = document.querySelectorAll('#scheduleTable tbody tr'); // Select all rows in the table
+    if (!isFiltered) {
+        // First double-click: Call filterByDate
+        filterByDate(header);
+        isFiltered = true; // Set the flag to true
+    } else {
+        // Second double-click: Call resetFilter
+        resetFilter();
+        isFiltered = false; // Reset the flag
+    }
+}
+
+function filterByDate(header) {
+    const table = document.getElementById('scheduleTable');
+    const rows = table.querySelectorAll('tbody tr');
+    const dateToFilter = header.innerText.trim();
+
+    rows.forEach(row => {
+        const rowDate = row.getAttribute('data-date');
+
+        if (new Date(rowDate).toDateString() === new Date(dateToFilter).toDateString()) {
+            row.style.display = '';
+            row.setAttribute("title", "Кликни 2 пъти на датата, за да изтриеш филтъра");
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+function resetFilter() {
+    const rows = document.querySelectorAll('#scheduleTable tbody tr');
+    rows.forEach(row => {
+        row.style.display = '';
+        row.setAttribute("title", "Кликни 2 пъти на датата, за да филтрираш");
+    });
+}
+
