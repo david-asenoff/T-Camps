@@ -81,14 +81,22 @@
                                 @foreach (var group in groupedSchedules)
                                 {
                                     var groupDate = group.Key.ToString("dd.MM.yyyy");
-                                    foreach (var item in group)
+                                    var groupRows = group.ToList();
+                                    for (int i = 0; i < groupRows.Count; i++)
                                     {
-                                        <tr data-date="@groupDate" title="Кликни 2 пъти на датата, за да филтрираш">
-                                            <td ondblclick="handleDoubleClick(this)" class="fw-bold text-primary" style="cursor: pointer;">
-                                                @group.Key.ToString("dd.MM.yyyy (dddd)", culture)
-                                            </td>
-                                            <td style="color: white">@item.Time.ToString("HH:mm")</td>
-                                            <td style="color: white" class="text-start">@item.Description</td>
+                                        <tr data-date="@groupDate">
+                                            @if (i == 0)
+                                            {
+                                                <td ondblclick="handleDoubleClick(this)"
+                                                    class="fw-bold text-primary"
+                                                    title="Кликни 2 пъти за да филтрираш"
+                                                    style="cursor: pointer;"
+                                                    rowspan="@groupRows.Count">
+                                                    @group.Key.ToString("dd.MM.yyyy (dddd)", culture)
+                                                </td>
+                                            }
+                                            <td style="color: white">@groupRows[i].Time.ToString("HH:mm")</td>
+                                            <td style="color: white" class="text-start">@groupRows[i].Description</td>
                                         </tr>
                                     }
                                 }
